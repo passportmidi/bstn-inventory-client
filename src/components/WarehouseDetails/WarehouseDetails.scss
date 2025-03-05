@@ -15,31 +15,52 @@
     justify-content: space-between;
     align-items: center;
     border-bottom: solid 1px $secondary-cloud;
+
+    @include tablet {
+      padding: 1.5rem;
+    }
+
+    @include desktop {
+      padding: 2rem;
+    }
   }
 
   &__header {
     display: flex;
     flex-direction: row;
     gap: 0.5rem;
+    align-items: center;
 
-    // &--back {
-    // }
+    &--back {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    &--back-link {
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+    }
 
     &--name {
       @include page-header;
     }
   }
 
-  //   &__edit {
-  //     // background-color: $primary-indigo;
-  //   }
-
   &__edit1 {
+    display: flex;
+    justify-content: center;
     background-color: $primary-indigo;
     border-radius: 50%;
     padding: 6px;
     align-items: center;
     align-self: center;
+    cursor: pointer;
+
+    &:hover {
+      background-color: $background-graphite;
+    }
 
     @include tablet {
       display: none;
@@ -48,23 +69,21 @@
   &__edit2 {
     display: none;
 
-    @include tablet {
-      @include labels-links-buttons;
+    &--link {
+      text-decoration: none;
       color: $primary-white;
       display: flex;
-      flex-direction: row;
-      background-color: $primary-indigo;
-      border-radius: 20px;
-      padding: 8px 16px;
-      gap: 10px;
       align-items: center;
+      gap: 0.5rem;
     }
 
-    // &--icon {
-    // }
-
-    // &--desc {
-    // }
+    @include tablet {
+      @include primary-button();
+      gap: 10px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+    }
   }
 
   &__main {
@@ -74,7 +93,13 @@
 
     @include tablet {
       flex-direction: row;
-      gap: 7em;
+      gap: 7rem;
+      padding: 1.5rem;
+    }
+
+    @include desktop {
+      padding: 2rem;
+      gap: 20rem;
     }
   }
 
@@ -110,17 +135,14 @@
     display: flex;
     flex-direction: row;
     gap: 3rem;
-    // justify-content: space-between;
 
     @include tablet {
       border-left: $secondary-cloud solid 1px;
       padding-left: 3rem;
     }
-  }
 
-  &__name {
-  }
-
-  &__information {
+    @include desktop {
+      gap: 8rem;
+    }
   }
 }

@@ -1,87 +1,93 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
 export const baseURL = import.meta.env.VITE_API_URL;
 import backArrow from "../../assets/icons/arrow_back-24px.svg";
 import editButton from "../../assets/icons/edit-white-24px.svg";
 import "./WarehouseDetails.scss";
+import { Link, useParams } from "react-router-dom";
 
 export default function WarehouseDetailsInfo() {
-  //   const { id } = useParams();
-  //   const [warehouse, setWarehouse] = useState(null);
+  const { id } = useParams();
+  const [warehouse, setWarehouse] = useState(null);
 
-  //   useEffect(() => {
-  //     fetchWarehouse();
-  //   }, [id]);
+  useEffect(() => {
+    fetchWarehouse();
+  }, [id]);
 
-  //   async function fetchWarehouse() {
-  //     try {
-  //       const { data } = await axios.get(`${baseURL}/api/warehouse/${id}`);
-  //       setWarehouse(data);
-  //     } catch (e) {
-  //       console.log("Error fetching warehouse:", e);
-  //     }
-  //   }
-  //   if (!warehouse) {
-  //     return <div>Loading Warehouse...</div>;
-  //   }
+  async function fetchWarehouse() {
+    try {
+      const { data } = await axios.get(`${baseURL}/api/warehouses/${id}`);
+      setWarehouse(data);
+    } catch (e) {
+      console.log("Error fetching warehouse:", e);
+    }
+  }
+  if (!warehouse) {
+    return <div>Loading Warehouse...</div>;
+  }
   return (
     <>
       <div className="details">
         <div className="details__head">
           <div className="details__header">
-            <img
-              className="details__header--back"
-              alt="back-icon"
-              src={backArrow}
-            />
-            <h1 className="details__header--name"> Washington </h1>
-          </div>
-          {/* add in link to edit page  FIXME:*/}
-          <div className="details__edit">
-            <img className="details__edit1" alt="edit-icon" src={editButton} />
-            <div className="details__edit2">
+            <Link to="/" className="details__header--back-link">
               <img
-                className="details__edit2--icon"
+                className="details__header--back"
+                alt="back-icon"
+                src={backArrow}
+              />
+            </Link>
+            <h1 className="details__header--name">
+              {warehouse.warehouse_name}
+            </h1>
+          </div>
+          <div className="details__edit">
+            <Link to={`/warehouse/${id}/edit`} className="details__edit1--link">
+              <img
+                className="details__edit1"
                 alt="edit-icon"
                 src={editButton}
               />
-              <p className="details__edit2--desc"> Edit </p>
+            </Link>
+            <div className="details__edit2">
+              <Link
+                to={`/warehouse/${id}/edit`}
+                className="details__edit2--link"
+              >
+                <img
+                  className="details__edit2--icon"
+                  alt="edit-icon"
+                  src={editButton}
+                />
+                <p className="details__edit2--desc"> Edit </p>
+              </Link>
             </div>
           </div>
         </div>
         <div className="details__main">
           <div className="details__address">
             <h3 className="details__subheader"> Warehouse Address </h3>
-            <p className="details__desc details__same-line"> 300 pearl west </p>
-            <p className="details__desc details__same-line">washington USA</p>
+            <p className="details__desc details__same-line">
+              {warehouse.address}{" "}
+            </p>{" "}
+            <p className="details__desc details__same-line">
+              {warehouse.city}, {warehouse.country}{" "}
+            </p>
           </div>
           <div className="details__contact">
             <div className="details__name">
               <h3 className="details__subheader"> Contact Name </h3>
-              <p className="details__desc"> Brinda Patel </p>
-              <p className="details__desc"> Warehouse Manager</p>
+              <p className="details__desc"> {warehouse.contact_name} </p>{" "}
+              <p className="details__desc">{warehouse.contact_position}</p>
             </div>
             <div className="details__information">
               <h3 className="details__subheader"> Contact Information </h3>
-              <p className="details__desc"> +1 613-617-0931 </p>
-              <p className="details__desc"> brpatel@deloitte.ca </p>
+              <p className="details__desc"> {warehouse.contact_phone} </p>{" "}
+              <p className="details__desc"> {warehouse.contact_email} </p>{" "}
             </div>
           </div>
         </div>
       </div>
     </>
   );
-}
-
-{
-  /* "warehouse_name": "Manhattan",
-    "address": "503 Broadway",
-    "city": "New York",
-    "country": "USA",
-    "contact_name": "Parmin Aujla",
-    "contact_position": "Warehouse Manager",
-    "contact_phone": "+1 (646) 123-1234",
-    "contact_email": "paujla@instock.com"
-    </> */
 }
