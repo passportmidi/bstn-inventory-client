@@ -1,5 +1,4 @@
 import "./App.scss";
-import WarehouseList from "./components/WarehouseList/WarehouseList";
 import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Warehouses from "./pages/Warehouses/Warehouses";
@@ -32,7 +31,6 @@ const App = () => {
           <Route path="/" element={<Warehouses />} />
         </Routes>
       </div>
-      <WarehouseList />
     </BrowserRouter>
   );
 };
