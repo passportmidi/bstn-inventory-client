@@ -1,0 +1,13 @@
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/variables" as *;
+
+.table__cell {
+  text-align: left;
+  @include body-medium;
+  color: $primary-black;
+  &--heading {
+    @include table-header;
+    text-transform: uppercase;
+    color: $secondary-slate;
+  }
+}
