@@ -1,56 +1,59 @@
-import { useState } from 'react';
-import { Link } from 'react-router-dom'; 
-import './AddWarehouse.scss';
-import arrowBackIcon from '../../assets/icons/arrow_back-24px.svg';
+import { useState } from "react";
+import { Link } from "react-router-dom";
+import "./AddWarehouse.scss";
+import arrowBackIcon from "../../assets/icons/arrow_back-24px.svg";
 
 const AddWarehouse = () => {
   const [formData, setFormData] = useState({
-    warehouseName: '',
-    streetAddress: '',
-    city: '',
-    country: '',
-    contactName: '',
-    position: '',
-    phoneNumber: '',
-    email: '',
+    warehouseName: "",
+    streetAddress: "",
+    city: "",
+    country: "",
+    contactName: "",
+    position: "",
+    phoneNumber: "",
+    email: "",
   });
 
   const [errors, setErrors] = useState({});
 
   const validateEmail = (email) => {
-    return email.includes('@') && email.includes('.');
+    return email.includes("@") && email.includes(".");
   };
 
   const validatePhoneNumber = (phoneNumber) => {
-    return phoneNumber.startsWith('+1');
+    return phoneNumber.startsWith("+1");
   };
 
   const validateForm = () => {
     const newErrors = {};
 
-    if (!formData.warehouseName) newErrors.warehouseName = 'Warehouse Name is required';
-    if (!formData.streetAddress) newErrors.streetAddress = 'Street Address is required';
-    if (!formData.city) newErrors.city = 'City is required';
-    if (!formData.country) newErrors.country = 'Country is required';
-    if (!formData.contactName) newErrors.contactName = 'Contact Name is required';
-    if (!formData.position) newErrors.position = 'Position is required';
+    if (!formData.warehouseName)
+      newErrors.warehouseName = "Warehouse Name is required";
+    if (!formData.streetAddress)
+      newErrors.streetAddress = "Street Address is required";
+    if (!formData.city) newErrors.city = "City is required";
+    if (!formData.country) newErrors.country = "Country is required";
+    if (!formData.contactName)
+      newErrors.contactName = "Contact Name is required";
+    if (!formData.position) newErrors.position = "Position is required";
     if (!formData.phoneNumber) {
-      newErrors.phoneNumber = 'Phone Number is required';
+      newErrors.phoneNumber = "Phone Number is required";
     } else if (!validatePhoneNumber(formData.phoneNumber)) {
-      newErrors.phoneNumber = 'Phone Number must start with +1';
+      newErrors.phoneNumber = "Phone Number must start with +1";
     }
     if (!formData.email) {
-      newErrors.email = 'Email is required';
+      newErrors.email = "Email is required";
     } else if (!validateEmail(formData.email)) {
-      newErrors.email = 'Invalid Email';
+      newErrors.email = "Invalid Email";
     }
 
     setErrors(newErrors);
 
     if (Object.keys(newErrors).length === 0) {
-      return true; 
+      return true;
     } else {
-      return false; 
+      return false;
     }
   };
 
@@ -58,7 +61,7 @@ const AddWarehouse = () => {
     e.preventDefault();
     if (validateForm()) {
       // Submit form data to the backend
-      console.log('Form submitted:', formData);
+      console.log("Form submitted:", formData);
       // Add API call here
     }
   };
@@ -92,10 +95,14 @@ const AddWarehouse = () => {
                 name="warehouseName"
                 value={formData.warehouseName}
                 onChange={handleChange}
-                className={`add-warehouse__input ${errors.warehouseName ? 'add-warehouse__input--error' : ''}`}
+                className={`add-warehouse__input ${
+                  errors.warehouseName ? "add-warehouse__input--error" : ""
+                }`}
               />
               {errors.warehouseName && (
-                <span className="add-warehouse__error-message">{errors.warehouseName}</span>
+                <span className="add-warehouse__error-message">
+                  {errors.warehouseName}
+                </span>
               )}
             </div>
             <div className="add-warehouse__form-group">
@@ -105,10 +112,14 @@ const AddWarehouse = () => {
                 name="streetAddress"
                 value={formData.streetAddress}
                 onChange={handleChange}
-                className={`add-warehouse__input ${errors.streetAddress ? 'add-warehouse__input--error' : ''}`}
+                className={`add-warehouse__input ${
+                  errors.streetAddress ? "add-warehouse__input--error" : ""
+                }`}
               />
               {errors.streetAddress && (
-                <span className="add-warehouse__error-message">{errors.streetAddress}</span>
+                <span className="add-warehouse__error-message">
+                  {errors.streetAddress}
+                </span>
               )}
             </div>
             <div className="add-warehouse__form-group">
@@ -118,10 +129,14 @@ const AddWarehouse = () => {
                 name="city"
                 value={formData.city}
                 onChange={handleChange}
-                className={`add-warehouse__input ${errors.city ? 'add-warehouse__input--error' : ''}`}
+                className={`add-warehouse__input ${
+                  errors.city ? "add-warehouse__input--error" : ""
+                }`}
               />
               {errors.city && (
-                <span className="add-warehouse__error-message">{errors.city}</span>
+                <span className="add-warehouse__error-message">
+                  {errors.city}
+                </span>
               )}
             </div>
             <div className="add-warehouse__form-group">
@@ -131,10 +146,14 @@ const AddWarehouse = () => {
                 name="country"
                 value={formData.country}
                 onChange={handleChange}
-                className={`add-warehouse__input ${errors.country ? 'add-warehouse__input--error' : ''}`}
+                className={`add-warehouse__input ${
+                  errors.country ? "add-warehouse__input--error" : ""
+                }`}
               />
               {errors.country && (
-                <span className="add-warehouse__error-message">{errors.country}</span>
+                <span className="add-warehouse__error-message">
+                  {errors.country}
+                </span>
               )}
             </div>
           </div>
@@ -149,10 +168,14 @@ const AddWarehouse = () => {
                 name="contactName"
                 value={formData.contactName}
                 onChange={handleChange}
-                className={`add-warehouse__input ${errors.contactName ? 'add-warehouse__input--error' : ''}`}
+                className={`add-warehouse__input ${
+                  errors.contactName ? "add-warehouse__input--error" : ""
+                }`}
               />
               {errors.contactName && (
-                <span className="add-warehouse__error-message">{errors.contactName}</span>
+                <span className="add-warehouse__error-message">
+                  {errors.contactName}
+                </span>
               )}
             </div>
             <div className="add-warehouse__form-group">
@@ -162,10 +185,14 @@ const AddWarehouse = () => {
                 name="position"
                 value={formData.position}
                 onChange={handleChange}
-                className={`add-warehouse__input ${errors.position ? 'add-warehouse__input--error' : ''}`}
+                className={`add-warehouse__input ${
+                  errors.position ? "add-warehouse__input--error" : ""
+                }`}
               />
               {errors.position && (
-                <span className="add-warehouse__error-message">{errors.position}</span>
+                <span className="add-warehouse__error-message">
+                  {errors.position}
+                </span>
               )}
             </div>
             <div className="add-warehouse__form-group">
@@ -175,10 +202,14 @@ const AddWarehouse = () => {
                 name="phoneNumber"
                 value={formData.phoneNumber}
                 onChange={handleChange}
-                className={`add-warehouse__input ${errors.phoneNumber ? 'add-warehouse__input--error' : ''}`}
+                className={`add-warehouse__input ${
+                  errors.phoneNumber ? "add-warehouse__input--error" : ""
+                }`}
               />
               {errors.phoneNumber && (
-                <span className="add-warehouse__error-message">{errors.phoneNumber}</span>
+                <span className="add-warehouse__error-message">
+                  {errors.phoneNumber}
+                </span>
               )}
             </div>
             <div className="add-warehouse__form-group">
@@ -188,10 +219,14 @@ const AddWarehouse = () => {
                 name="email"
                 value={formData.email}
                 onChange={handleChange}
-                className={`add-warehouse__input ${errors.email ? 'add-warehouse__input--error' : ''}`}
+                className={`add-warehouse__input ${
+                  errors.email ? "add-warehouse__input--error" : ""
+                }`}
               />
               {errors.email && (
-                <span className="add-warehouse__error-message">{errors.email}</span>
+                <span className="add-warehouse__error-message">
+                  {errors.email}
+                </span>
               )}
             </div>
           </div>
