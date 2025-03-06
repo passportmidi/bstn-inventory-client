@@ -4,18 +4,53 @@
 .warehouse {
   &__row {
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
+    grid-template-columns: repeat(2, 1fr);
+    @include tablet {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr) auto;
+    }
+  }
+  &__column {
+    // width: 50%;
+    @include tablet {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+    }
   }
   &__row:nth-of-type(n + 2) &__cell-label {
     @include tablet {
       display: none;
     }
   }
-  &__cell-label {
-    @include table-header;
-    text-transform: uppercase;
-    color: $secondary-slate;
+  &__cell {
+    &-label {
+      @include table-header;
+      text-transform: uppercase;
+      color: $secondary-slate;
+    }
+    &--actions {
+      grid-column: span 2;
+      @include tablet {
+        grid-column: auto;
+      }
+    }
+    &--actions &-label {
+      display: none;
+      @include tablet {
+        display: block;
+        text-align: right;
+      }
+    }
   }
+  &__actions {
+    display: flex;
+    width: stretch;
+    justify-content: space-between;
+    @include tablet {
+      gap: 12px;
+    }
+  }
+
   // &__contact-info * {
   //   overflow-wrap: break-word;
   //   word-wrap: break-word;
