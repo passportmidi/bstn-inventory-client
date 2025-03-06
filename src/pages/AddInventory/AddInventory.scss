@@ -1,0 +1,173 @@
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins" as *;
+
+.add-inventory-item {
+  max-width: 64rem;
+  margin: auto 1rem;
+  padding: 1.25rem;
+  background-color: $primary-white;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+  @include tablet {
+    margin: auto 2rem;
+  }
+  @include desktop {
+    margin: auto auto;
+  }
+
+  &__header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1.25rem;
+  }
+
+  &__back-link {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+  }
+
+  &__back-icon {
+    cursor: pointer;
+    margin-right: 0.625rem;
+  }
+
+  &__title {
+    @include page-header();
+    color: $primary-black;
+  }
+
+  &__divider {
+    height: 1px;
+    background-color: $secondary-cloud;
+    margin-bottom: 1.25rem;
+    margin-left: -1.25rem;
+    margin-right: -1.25rem;
+  }
+
+  &__form-sections {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+
+    @include tablet {
+      flex-direction: row;
+      gap: 2.5rem;
+    }
+  }
+
+  &__section {
+    flex: 1;
+  }
+
+  &__section-title {
+    @include subheader();
+    color: $primary-black;
+    margin-bottom: 1.25rem;
+  }
+
+  &__form-group {
+    margin-bottom: 0.9375rem;
+  }
+
+  &__label {
+    display: block;
+    margin-bottom: 0.3125rem;
+    @include labels-links-buttons();
+    color: $primary-black;
+  }
+
+  &__input {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid $secondary-cloud;
+    border-radius: 18px;
+    @include body-medium();
+    color: $secondary-slate;
+    position: relative;
+
+    &--error {
+      border-color: $supporting-red;
+    }
+
+    &--description {
+      height: 6rem; 
+      padding-bottom: 3.5rem; 
+    }
+  }
+
+  &__error-message {
+    color: $supporting-red;
+    @include body-small();
+    margin-top: 0.3125rem;
+  }
+
+  &__divider-horizontal {
+    height: 1px;
+    background-color: $secondary-cloud;
+    margin: 1.25rem -1.25rem;
+
+    @include tablet {
+      display: none; 
+    }
+  }
+
+  &__divider-vertical {
+    display: none;
+
+    @include tablet {
+      display: block;
+      width: 1px;
+      background-color: $secondary-cloud;
+    }
+  }
+
+  &__radio-group {
+    display: flex;
+    gap: 1rem;
+  }
+
+  &__radio-label {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    @include body-medium();
+  }
+
+  &__buttons {
+    display: flex;
+    justify-content: center;
+    gap: 0.625rem;
+    padding: 1.25rem;
+    margin: 1.25rem -1.25rem -1.25rem -1.25rem;
+    background-color: $background-lightgrey;
+
+    @include tablet {
+      justify-content: flex-end;
+    }
+  }
+
+  &__cancel-button {
+    @include secondary-button();
+    text-decoration: none;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__submit-button {
+    @include primary-button();
+    border: $primary-indigo;
+  }
+
+  select {
+    appearance: none;
+    background-image: url("../../assets/icons/arrow_drop_down-24px.svg");
+    background-repeat: no-repeat;
+    background-position: right 0.75rem center;
+    background-size: 1rem;
+    padding-right: 2rem; 
+  }
+}
