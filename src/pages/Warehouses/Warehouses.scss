@@ -5,6 +5,8 @@
   &__row {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
+    padding: 24px;
+    border-top: 1px solid $secondary-cloud;
     @include tablet {
       display: grid;
       grid-template-columns: repeat(2, 1fr) auto;
@@ -16,12 +18,17 @@
       grid-template-columns: repeat(2, 1fr);
     }
   }
-  &__row:nth-of-type(n + 2) &__cell-label {
+  &__row:nth-of-type(n + 3) &__cell-label {
     @include tablet {
       display: none;
     }
   }
   &__cell {
+    &-item {
+      height: 100%;
+      display: flex;
+      align-items: center;
+    }
     &-label {
       @include table-header;
       text-transform: uppercase;
