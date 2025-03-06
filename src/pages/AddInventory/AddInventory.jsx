@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import axios from "axios";
 import "./AddInventory.scss";
 import arrowBackIcon from "../../assets/icons/arrow_back-24px.svg";
@@ -17,7 +17,6 @@ const AddInventoryItem = () => {
   const [errors, setErrors] = useState({});
   const [warehouses, setWarehouses] = useState([]);
   const [categories, setCategories] = useState([]);
-  const navigate = useNavigate(); 
 
   useEffect(() => {
     const fetchWarehouses = async () => {
@@ -40,7 +39,7 @@ const AddInventoryItem = () => {
         const { data } = await axios.get(
           `${import.meta.env.VITE_API_URL}/api/inventories`
         );
-        
+        // Extract unique categories from the inventory data
         const uniqueCategories = [...new Set(data.map((item) => item.category))];
         setCategories(uniqueCategories);
       } catch (error) {
@@ -72,19 +71,21 @@ const AddInventoryItem = () => {
     e.preventDefault();
 
     if (!validateForm()) {
-      return; 
+      return; // Stop if the form is invalid
     }
 
     try {
+      // Map form data to the API request body
       const requestBody = {
         warehouse_id: warehouses.find((wh) => wh.warehouse_name === formData.warehouse)?.id,
         item_name: formData.itemName,
         description: formData.description,
         category: formData.category,
         status: formData.status,
-        quantity: parseInt(formData.quantity, 10), 
+        quantity: parseInt(formData.quantity, 10), // Convert quantity to a number
       };
 
+      // Make the API call
       const response = await axios.post(
         `${import.meta.env.VITE_API_URL}/api/inventories`,
         requestBody
@@ -92,9 +93,12 @@ const AddInventoryItem = () => {
 
       console.log("Inventory item created:", response.data);
 
-      navigate("/inventories");
+      // Redirect to the inventory list page after successful creation
+      window.location.href = "/inventories"; // Use window.location for redirection
     } catch (error) {
       console.error("Error creating inventory item:", error);
+
+      // Display an error message to the user
       alert("Unable to create inventory item. Please try again.");
     }
   };

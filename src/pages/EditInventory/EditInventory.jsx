@@ -5,8 +5,8 @@ import "../AddInventory/AddInventory.scss";
 import arrowBackIcon from "../../assets/icons/arrow_back-24px.svg";
 
 const EditInventoryItem = () => {
-  const { id } = useParams(); 
-  const navigate = useNavigate(); 
+  const { id } = useParams(); // Get the inventory item ID from the URL
+  const navigate = useNavigate(); // For navigation after form submission
 
   const [formData, setFormData] = useState({
     itemName: "",
@@ -14,20 +14,23 @@ const EditInventoryItem = () => {
     category: "",
     status: "In Stock",
     quantity: "0",
-    warehouse: "", 
+    warehouse: "", // This will store the warehouse_name
   });
 
   const [errors, setErrors] = useState({});
   const [warehouses, setWarehouses] = useState([]);
   const [categories, setCategories] = useState([]);
 
+  // Fetch the inventory item data when the component mounts
   useEffect(() => {
     const fetchInventory = async () => {
       try {
+        // Fetch the inventory item with warehouse_name using the getAllInventories API
         const { data } = await axios.get(
           `${import.meta.env.VITE_API_URL}/api/inventories`
         );
 
+        // Find the inventory item with the matching ID
         const inventoryItem = data.find((item) => item.id === parseInt(id, 10));
 
         if (inventoryItem) {
@@ -36,8 +39,8 @@ const EditInventoryItem = () => {
             description: inventoryItem.description,
             category: inventoryItem.category,
             status: inventoryItem.status,
-            quantity: inventoryItem.quantity.toString(), 
-            warehouse: inventoryItem.warehouse_name,
+            quantity: inventoryItem.quantity.toString(), // Ensure quantity is a string for the input
+            warehouse: inventoryItem.warehouse_name, // Use warehouse_name from the joined data
           });
         } else {
           console.error("Inventory item not found");
@@ -50,6 +53,7 @@ const EditInventoryItem = () => {
     fetchInventory();
   }, [id]);
 
+  // Fetch warehouses when the component mounts
   useEffect(() => {
     const fetchWarehouses = async () => {
       try {
@@ -65,12 +69,14 @@ const EditInventoryItem = () => {
     fetchWarehouses();
   }, []);
 
+  // Fetch categories when the component mounts
   useEffect(() => {
     const fetchCategories = async () => {
       try {
         const { data } = await axios.get(
           `${import.meta.env.VITE_API_URL}/api/inventories`
         );
+        // Extract unique categories from the inventory data
         const uniqueCategories = [...new Set(data.map((item) => item.category))];
         setCategories(uniqueCategories);
       } catch (error) {
@@ -81,6 +87,7 @@ const EditInventoryItem = () => {
     fetchCategories();
   }, []);
 
+  // Validate the form
   const validateForm = () => {
     const newErrors = {};
 
@@ -97,23 +104,26 @@ const EditInventoryItem = () => {
     return Object.keys(newErrors).length === 0;
   };
 
+  // Handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     if (!validateForm()) {
-      return; 
+      return; // Stop if the form is invalid
     }
 
     try {
+      // Map form data to the API request body
       const requestBody = {
         warehouse_id: warehouses.find((wh) => wh.warehouse_name === formData.warehouse)?.id,
         item_name: formData.itemName,
         description: formData.description,
         category: formData.category,
         status: formData.status,
-        quantity: parseInt(formData.quantity, 10), 
+        quantity: parseInt(formData.quantity, 10), // Convert quantity to a number
       };
 
+      // Make the API call to update the inventory item
       await axios.put(
         `${import.meta.env.VITE_API_URL}/api/inventories/${id}`,
         requestBody
@@ -121,6 +131,7 @@ const EditInventoryItem = () => {
 
       console.log("Inventory updated successfully!");
 
+      // Redirect to the inventory list page after successful update
       navigate("/inventory");
     } catch (error) {
       console.error("Error updating inventory:", error);
@@ -128,6 +139,7 @@ const EditInventoryItem = () => {
     }
   };
 
+  // Handle form input changes
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });

@@ -1,0 +1,219 @@
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/variables" as *;
+
+.details {
+  margin-top: -1rem; //to be tested once nav is put in
+  margin: 2rem; //FOR TESTING
+  border-radius: 3px;
+  box-shadow: 0px 2px 5px 0px #13182c1a;
+
+  &__head {
+    padding: 1rem;
+    padding-bottom: 1.5rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: solid 1px $secondary-cloud;
+
+    @include tablet {
+      padding: 1.5rem;
+    }
+
+    @include desktop {
+      padding: 2rem;
+    }
+  }
+
+  &__header {
+    display: flex;
+    flex-direction: row;
+    gap: 0.5rem;
+    align-items: center;
+
+    &--back {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    &--back-link {
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+    }
+
+    &--name {
+      @include page-header;
+    }
+  }
+
+  &__edit1 {
+    display: flex;
+    justify-content: center;
+    background-color: $primary-indigo;
+    border-radius: 50%;
+    padding: 6px;
+    align-items: center;
+    align-self: center;
+    cursor: pointer;
+
+    &:hover {
+      background-color: $background-graphite;
+    }
+
+    @include tablet {
+      display: none;
+    }
+  }
+  &__edit2 {
+    display: none;
+
+    &--link {
+      text-decoration: none;
+      color: $primary-white;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    @include tablet {
+      @include primary-button();
+      gap: 10px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+    }
+  }
+
+  &__main {
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+
+    @include tablet {
+      flex-direction: row;
+      gap: 4rem;
+      padding: 1.5rem;
+    }
+
+    @include desktop {
+      padding: 2rem;
+      gap: 10rem;
+    }
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__item {
+    padding-bottom: 1rem;
+
+    @include tablet {
+      padding-bottom: 2rem;
+    }
+  }
+
+  &__category {
+    padding-bottom: 1rem;
+  }
+
+  &__info {
+    @include tablet {
+      border-left: 1px $secondary-cloud solid;
+      padding-left: 4rem;
+    }
+  }
+
+  &__stats {
+    display: flex;
+    flex-direction: row;
+    gap: 7rem;
+
+    @include tablet {
+      padding-bottom: 2rem;
+      gap: 4rem;
+      padding-right: 3rem;
+    }
+
+    @include desktop {
+      gap: 10rem;
+    }
+  }
+
+  &__status {
+    padding-bottom: 1rem;
+  }
+
+  &__stock {
+    @include table-header;
+    text-transform: uppercase;
+    height: 1.5rem;
+    padding: 0.5rem;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: max-content;
+
+    @include tablet {
+      height: 1.625rem;
+    }
+  }
+
+  &__address {
+    padding-bottom: 1rem;
+
+    @include tablet {
+      padding-bottom: 0rem;
+    }
+  }
+
+  &__subheader {
+    @include table-header;
+    color: $secondary-slate;
+    text-transform: uppercase;
+    padding-bottom: 0.25rem;
+  }
+
+  &__desc {
+    @include body-medium;
+    color: $primary-black;
+  }
+
+  &__same-line {
+    display: inline;
+
+    @include tablet {
+      display: block;
+    }
+  }
+
+  &__contact {
+    display: flex;
+    flex-direction: row;
+    gap: 3rem;
+
+    @include tablet {
+      border-left: $secondary-cloud solid 1px;
+      padding-left: 3rem;
+    }
+
+    @include desktop {
+      gap: 8rem;
+    }
+  }
+}
+
+.in-stock {
+  color: #158463;
+  background-color: rgb(21, 132, 99, 0.07);
+}
+
+.out-of-stock {
+  color: #c94515;
+  background-color: rgb(201, 69, 21, 0.07);
+}
