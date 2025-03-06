@@ -11,7 +11,6 @@
     }
   }
   &__column {
-    // width: 50%;
     @include tablet {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
@@ -50,9 +49,4 @@
       gap: 12px;
     }
   }
-
-  // &__contact-info * {
-  //   overflow-wrap: break-word;
-  //   word-wrap: break-word;
-  // }
 }
