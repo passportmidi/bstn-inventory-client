@@ -1,3 +1,10 @@
-export default function InventoryDetail() {
-    return <h1>InventoryDetail</h1>
+import InventoryDetailsInfo from "../../components/InventoryDetails/InventoryDetails";
+
+export default function InventoryDetails() {
+  return (
+    <>
+      <h1>InventoryDetail</h1>;
+      <InventoryDetailsInfo />
+    </>
+  );
 }
