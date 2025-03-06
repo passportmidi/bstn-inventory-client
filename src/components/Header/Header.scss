@@ -88,6 +88,9 @@
 
 .gap {
   background-color: $background-graphite;
-  height: 6rem;
+  height: 4rem;
 //   border-top: 1px solid white;
+    @include tablet {
+        height: 5rem;
+    }
 }
