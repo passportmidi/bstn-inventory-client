@@ -1,11 +1,317 @@
-import Header from "../../components/Header/Header";
+import { useState, useEffect } from "react";
+import { Link, useParams, useNavigate } from "react-router-dom";
+import axios from "axios";
+import "../AddInventory/AddInventory.scss";
+import arrowBackIcon from "../../assets/icons/arrow_back-24px.svg";
 
-export default function EditInventory() {
-    return (
-      <>
-        <Header />
-        <h1>EditInventory</h1>
-      </>
-    );
-    
-}
+const EditInventoryItem = () => {
+  const { id } = useParams(); // Get the inventory item ID from the URL
+  const navigate = useNavigate(); // For navigation after form submission
+
+  const [formData, setFormData] = useState({
+    itemName: "",
+    description: "",
+    category: "",
+    status: "In Stock",
+    quantity: "0",
+    warehouse: "", // This will store the warehouse_name
+  });
+
+  const [errors, setErrors] = useState({});
+  const [warehouses, setWarehouses] = useState([]);
+  const [categories, setCategories] = useState([]);
+
+  // Fetch the inventory item data when the component mounts
+  useEffect(() => {
+    const fetchInventory = async () => {
+      try {
+        // Fetch the inventory item with warehouse_name using the getAllInventories API
+        const { data } = await axios.get(
+          `${import.meta.env.VITE_API_URL}/api/inventories`
+        );
+
+        // Find the inventory item with the matching ID
+        const inventoryItem = data.find((item) => item.id === parseInt(id, 10));
+
+        if (inventoryItem) {
+          setFormData({
+            itemName: inventoryItem.item_name,
+            description: inventoryItem.description,
+            category: inventoryItem.category,
+            status: inventoryItem.status,
+            quantity: inventoryItem.quantity.toString(), // Ensure quantity is a string for the input
+            warehouse: inventoryItem.warehouse_name, // Use warehouse_name from the joined data
+          });
+        } else {
+          console.error("Inventory item not found");
+        }
+      } catch (error) {
+        console.error("Error fetching inventory:", error);
+      }
+    };
+
+    fetchInventory();
+  }, [id]);
+
+  // Fetch warehouses when the component mounts
+  useEffect(() => {
+    const fetchWarehouses = async () => {
+      try {
+        const { data } = await axios.get(
+          `${import.meta.env.VITE_API_URL}/api/warehouses`
+        );
+        setWarehouses(data);
+      } catch (error) {
+        console.error("Error fetching warehouses:", error);
+      }
+    };
+
+    fetchWarehouses();
+  }, []);
+
+  // Fetch categories when the component mounts
+  useEffect(() => {
+    const fetchCategories = async () => {
+      try {
+        const { data } = await axios.get(
+          `${import.meta.env.VITE_API_URL}/api/inventories`
+        );
+        // Extract unique categories from the inventory data
+        const uniqueCategories = [...new Set(data.map((item) => item.category))];
+        setCategories(uniqueCategories);
+      } catch (error) {
+        console.error("Error fetching inventories:", error);
+      }
+    };
+
+    fetchCategories();
+  }, []);
+
+  // Validate the form
+  const validateForm = () => {
+    const newErrors = {};
+
+    if (!formData.itemName) newErrors.itemName = "Item Name is required";
+    if (!formData.description) newErrors.description = "Description is required";
+    if (!formData.category) newErrors.category = "Category is required";
+    if (!formData.status) newErrors.status = "Status is required";
+    if (formData.status === "In Stock" && !formData.quantity) {
+      newErrors.quantity = "Quantity is required";
+    }
+    if (!formData.warehouse) newErrors.warehouse = "Warehouse is required";
+
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
+
+  // Handle form submission
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    if (!validateForm()) {
+      return; // Stop if the form is invalid
+    }
+
+    try {
+      // Map form data to the API request body
+      const requestBody = {
+        warehouse_id: warehouses.find((wh) => wh.warehouse_name === formData.warehouse)?.id,
+        item_name: formData.itemName,
+        description: formData.description,
+        category: formData.category,
+        status: formData.status,
+        quantity: parseInt(formData.quantity, 10), // Convert quantity to a number
+      };
+
+      // Make the API call to update the inventory item
+      await axios.put(
+        `${import.meta.env.VITE_API_URL}/api/inventories/${id}`,
+        requestBody
+      );
+
+      console.log("Inventory updated successfully!");
+
+      // Redirect to the inventory list page after successful update
+      navigate("/inventory");
+    } catch (error) {
+      console.error("Error updating inventory:", error);
+      alert("Unable to update inventory item. Please try again.");
+    }
+  };
+
+  // Handle form input changes
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+  };
+
+  return (
+    <div className="add-inventory-item">
+      <div className="add-inventory-item__header">
+        <Link to="/inventory" className="add-inventory-item__back-link">
+          <img
+            src={arrowBackIcon}
+            alt="Back"
+            className="add-inventory-item__back-icon"
+          />
+        </Link>
+        <h1 className="add-inventory-item__title">Edit Inventory Item</h1>
+      </div>
+      <div className="add-inventory-item__divider"></div>
+      <form className="add-inventory-item__form" onSubmit={handleSubmit}>
+        <div className="add-inventory-item__form-sections">
+          <div className="add-inventory-item__section">
+            <h2 className="add-inventory-item__section-title">Item Details</h2>
+            <div className="add-inventory-item__form-group">
+              <label className="add-inventory-item__label">Item Name</label>
+              <input
+                type="text"
+                name="itemName"
+                value={formData.itemName}
+                onChange={handleChange}
+                className={`add-inventory-item__input ${
+                  errors.itemName ? "add-inventory-item__input--error" : ""
+                }`}
+                placeholder="Item Name"
+              />
+              {errors.itemName && (
+                <span className="add-inventory-item__error-message">
+                  {errors.itemName}
+                </span>
+              )}
+            </div>
+            <div className="add-inventory-item__form-group">
+              <label className="add-inventory-item__label">Description</label>
+              <input
+                type="text"
+                name="description"
+                value={formData.description}
+                onChange={handleChange}
+                className={`add-inventory-item__input add-inventory-item__input--description ${
+                  errors.description ? "add-inventory-item__input--error" : ""
+                }`}
+                placeholder="Please enter a brief item description..."
+              />
+              {errors.description && (
+                <span className="add-inventory-item__error-message">
+                  {errors.description}
+                </span>
+              )}
+            </div>
+            <div className="add-inventory-item__form-group">
+              <label className="add-inventory-item__label">Category</label>
+              <select
+                name="category"
+                value={formData.category}
+                onChange={handleChange}
+                className={`add-inventory-item__input ${
+                  errors.category ? "add-inventory-item__input--error" : ""
+                }`}
+              >
+                <option value="">Please select</option>
+                {categories.map((cat, index) => (
+                  <option key={index} value={cat}>
+                    {cat}
+                  </option>
+                ))}
+              </select>
+              {errors.category && (
+                <span className="add-inventory-item__error-message">
+                  {errors.category}
+                </span>
+              )}
+            </div>
+          </div>
+          <div className="add-inventory-item__divider-horizontal"></div>
+          <div className="add-inventory-item__divider-vertical"></div>
+          <div className="add-inventory-item__section">
+            <h2 className="add-inventory-item__section-title">Item Availability</h2>
+            <div className="add-inventory-item__form-group">
+              <label className="add-inventory-item__label">Status</label>
+              <div className="add-inventory-item__radio-group">
+                <label className="add-inventory-item__radio-label">
+                  <input
+                    type="radio"
+                    name="status"
+                    value="In Stock"
+                    checked={formData.status === "In Stock"}
+                    onChange={handleChange}
+                  />
+                  In stock
+                </label>
+                <label className="add-inventory-item__radio-label">
+                  <input
+                    type="radio"
+                    name="status"
+                    value="Out of Stock"
+                    checked={formData.status === "Out of Stock"}
+                    onChange={handleChange}
+                  />
+                  Out of stock
+                </label>
+              </div>
+              {errors.status && (
+                <span className="add-inventory-item__error-message">
+                  {errors.status}
+                </span>
+              )}
+            </div>
+            {formData.status === "In Stock" && (
+              <div className="add-inventory-item__form-group">
+                <label className="add-inventory-item__label">Quantity</label>
+                <input
+                  type="number"
+                  name="quantity"
+                  value={formData.quantity}
+                  onChange={handleChange}
+                  className={`add-inventory-item__input ${
+                    errors.quantity ? "add-inventory-item__input--error" : ""
+                  }`}
+                  placeholder="Quantity"
+                />
+                {errors.quantity && (
+                  <span className="add-inventory-item__error-message">
+                    {errors.quantity}
+                  </span>
+                )}
+              </div>
+            )}
+            <div className="add-inventory-item__form-group">
+              <label className="add-inventory-item__label">Warehouse</label>
+              <select
+                name="warehouse"
+                value={formData.warehouse}
+                onChange={handleChange}
+                className={`add-inventory-item__input ${
+                  errors.warehouse ? "add-inventory-item__input--error" : ""
+                }`}
+              >
+                <option value="">Please select</option>
+                {warehouses.map((wh) => (
+                  <option key={wh.id} value={wh.warehouse_name}>
+                    {wh.warehouse_name}
+                  </option>
+                ))}
+              </select>
+              {errors.warehouse && (
+                <span className="add-inventory-item__error-message">
+                  {errors.warehouse}
+                </span>
+              )}
+            </div>
+          </div>
+        </div>
+        <div className="add-inventory-item__buttons">
+          <Link to="/inventory" className="add-inventory-item__cancel-button">
+            Cancel
+          </Link>
+          <button type="submit" className="add-inventory-item__submit-button">
+            Save
+          </button>
+        </div>
+      </form>
+    </div>
+  );
+};
+
+export default EditInventoryItem;
