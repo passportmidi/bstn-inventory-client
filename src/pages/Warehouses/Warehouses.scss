@@ -1,6 +1,23 @@
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/variables" as *;
+
 .warehouse {
   &__row {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
   }
+  &__row:nth-of-type(n + 2) &__cell-label {
+    @include tablet {
+      display: none;
+    }
+  }
+  &__cell-label {
+    @include table-header;
+    text-transform: uppercase;
+    color: $secondary-slate;
+  }
+  // &__contact-info * {
+  //   overflow-wrap: break-word;
+  //   word-wrap: break-word;
+  // }
 }
