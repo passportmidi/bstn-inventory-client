@@ -25,6 +25,7 @@ export default function InventoryDetailsInfo() {
   if (!inventory) {
     return <div>Loading Inventory...</div>;
   }
+
   return (
     <>
       <div className="details">
@@ -63,7 +64,7 @@ export default function InventoryDetailsInfo() {
           </div>
         </div>
         <div className="details__main">
-          <div className="details__desc">
+          <div className="details__content">
             <div className="details__item">
               <h3 className="details__subheader"> Item Description: </h3>
               <p className="details__desc">{inventory.description} </p>{" "}
@@ -77,7 +78,16 @@ export default function InventoryDetailsInfo() {
             <div className="details__stats">
               <div className="details__status">
                 <h3 className="details__subheader"> Status: </h3>
-                <p className="details__desc"> {inventory.status} </p>
+                <p
+                  className={`details__stock ${
+                    inventory.status === "In Stock"
+                      ? "in-stock"
+                      : "out-of-stock"
+                  }`}
+                >
+                  {" "}
+                  {inventory.status}{" "}
+                </p>
               </div>
               <div className="details__quantity">
                 <h3 className="details__subheader"> Quantity: </h3>
