@@ -98,6 +98,7 @@ const AddWarehouse = () => {
                 className={`add-warehouse__input ${
                   errors.warehouseName ? "add-warehouse__input--error" : ""
                 }`}
+                placeholder="Warehouse Name"
               />
               {errors.warehouseName && (
                 <span className="add-warehouse__error-message">
@@ -115,6 +116,7 @@ const AddWarehouse = () => {
                 className={`add-warehouse__input ${
                   errors.streetAddress ? "add-warehouse__input--error" : ""
                 }`}
+                placeholder="Street Address"
               />
               {errors.streetAddress && (
                 <span className="add-warehouse__error-message">
@@ -132,6 +134,7 @@ const AddWarehouse = () => {
                 className={`add-warehouse__input ${
                   errors.city ? "add-warehouse__input--error" : ""
                 }`}
+                placeholder="City"
               />
               {errors.city && (
                 <span className="add-warehouse__error-message">
@@ -149,6 +152,7 @@ const AddWarehouse = () => {
                 className={`add-warehouse__input ${
                   errors.country ? "add-warehouse__input--error" : ""
                 }`}
+                placeholder="Country"
               />
               {errors.country && (
                 <span className="add-warehouse__error-message">
@@ -171,6 +175,7 @@ const AddWarehouse = () => {
                 className={`add-warehouse__input ${
                   errors.contactName ? "add-warehouse__input--error" : ""
                 }`}
+                placeholder="Contact Name"
               />
               {errors.contactName && (
                 <span className="add-warehouse__error-message">
@@ -188,6 +193,7 @@ const AddWarehouse = () => {
                 className={`add-warehouse__input ${
                   errors.position ? "add-warehouse__input--error" : ""
                 }`}
+                placeholder="Position"
               />
               {errors.position && (
                 <span className="add-warehouse__error-message">
@@ -205,6 +211,7 @@ const AddWarehouse = () => {
                 className={`add-warehouse__input ${
                   errors.phoneNumber ? "add-warehouse__input--error" : ""
                 }`}
+                placeholder="Phone Number"
               />
               {errors.phoneNumber && (
                 <span className="add-warehouse__error-message">
@@ -222,6 +229,7 @@ const AddWarehouse = () => {
                 className={`add-warehouse__input ${
                   errors.email ? "add-warehouse__input--error" : ""
                 }`}
+                placeholder="Email"
               />
               {errors.email && (
                 <span className="add-warehouse__error-message">
