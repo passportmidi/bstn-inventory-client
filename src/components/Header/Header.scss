@@ -1,0 +1,93 @@
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/typography" as *;
+@use "../../styles/partials/variables" as *;
+
+.nav {
+  display: flex;
+
+  padding: 1rem;
+  flex-direction: column;
+  // justify-content: center;
+  align-items: center;
+  gap: 1rem;
+
+  background-color: $background-graphite;
+  font-family: $font-family;
+  font-weight: 400;
+
+  @include tablet {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 2rem;
+  }
+
+  @include desktop {
+    padding: 2rem 4rem;
+  }
+
+  img {
+    object-fit: cover;
+    object-position: center;
+    width: 130px;
+  }
+
+  a {
+    text-decoration: none;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  &__wordmark {
+    // width: 100%;
+    // display: flex;
+    // justify-content: center;
+  }
+
+  &__links {
+    font-size: 0.875rem;
+    width: 100%;
+    display: flex;
+
+    justify-content: space-between;
+
+    // when links are in-active
+    .nav-link {
+      line-height: 20px;
+      color: $secondary-cloud;
+      padding: 0.5rem 2.5rem;
+      border-radius: 9999px;
+
+
+      @include tablet {
+        padding: 0.5rem 0;
+        
+
+      }
+    }
+
+    // when links are active
+    .active-link {
+      color: $primary-white;
+      background-color: $primary-black;
+
+      @include tablet {
+        padding: 0.5rem 1rem;
+        gap: 1.5rem;
+
+      }
+    }
+
+    @include tablet {
+        width: fit-content;
+        gap: 1.4rem;
+    }
+  }
+}
+
+.gap {
+  background-color: $background-graphite;
+  height: 6rem;
+//   border-top: 1px solid white;
+}
