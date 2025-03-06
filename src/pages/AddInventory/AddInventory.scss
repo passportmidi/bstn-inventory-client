@@ -1,25 +1,25 @@
 @use "../../styles/partials/variables" as *;
 @use "../../styles/partials/mixins" as *;
 
-.add-warehouse {
+.add-inventory-item {
   max-width: 64rem;
-  margin: auto 1rem; 
+  margin: auto 1rem;
   padding: 1.25rem;
   background-color: $primary-white;
   border-radius: 4px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 
   @include tablet {
-    margin: auto 2rem; 
+    margin: auto 2rem;
   }
   @include desktop {
-    margin: auto auto; 
+    margin: auto auto;
   }
+
   &__header {
     display: flex;
     align-items: center;
     margin-bottom: 1.25rem;
-
   }
 
   &__back-link {
@@ -84,10 +84,16 @@
     border: 1px solid $secondary-cloud;
     border-radius: 18px;
     @include body-medium();
-    color: $primary-black;
+    color: $secondary-slate;
+    position: relative;
 
     &--error {
       border-color: $supporting-red;
+    }
+
+    &--description {
+      height: 6rem; 
+      padding-bottom: 3.5rem; 
     }
   }
 
@@ -100,7 +106,7 @@
   &__divider-horizontal {
     height: 1px;
     background-color: $secondary-cloud;
-    margin: 1.25rem -1.25rem; 
+    margin: 1.25rem -1.25rem;
 
     @include tablet {
       display: none; 
@@ -117,12 +123,24 @@
     }
   }
 
+  &__radio-group {
+    display: flex;
+    gap: 1rem;
+  }
+
+  &__radio-label {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    @include body-medium();
+  }
+
   &__buttons {
     display: flex;
     justify-content: center;
     gap: 0.625rem;
     padding: 1.25rem;
-    margin: 1.25rem -1.25rem -1.25rem -1.25rem; 
+    margin: 1.25rem -1.25rem -1.25rem -1.25rem;
     background-color: $background-lightgrey;
 
     @include tablet {
@@ -142,5 +160,14 @@
   &__submit-button {
     @include primary-button();
     border: $primary-indigo;
+  }
+
+  select {
+    appearance: none;
+    background-image: url("../../assets/icons/arrow_drop_down-24px.svg");
+    background-repeat: no-repeat;
+    background-position: right 0.75rem center;
+    background-size: 1rem;
+    padding-right: 2rem; 
   }
 }
