@@ -1,5 +1,6 @@
-import { useState } from "react";
-import { Link } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import axios from "axios";
 import "./AddInventory.scss";
 import arrowBackIcon from "../../assets/icons/arrow_back-24px.svg";
 
@@ -8,12 +9,47 @@ const AddInventoryItem = () => {
     itemName: "",
     description: "",
     category: "",
-    status: "In Stock", 
-    quantity: "0", 
-    warehouse: "", 
+    status: "In Stock",
+    quantity: "0",
+    warehouse: "",
   });
 
   const [errors, setErrors] = useState({});
+  const [warehouses, setWarehouses] = useState([]);
+  const [categories, setCategories] = useState([]);
+  const navigate = useNavigate(); 
+
+  useEffect(() => {
+    const fetchWarehouses = async () => {
+      try {
+        const { data } = await axios.get(
+          `${import.meta.env.VITE_API_URL}/api/warehouses`
+        );
+        setWarehouses(data);
+      } catch (error) {
+        console.error("Error fetching warehouses:", error);
+      }
+    };
+
+    fetchWarehouses();
+  }, []);
+
+  useEffect(() => {
+    const fetchCategories = async () => {
+      try {
+        const { data } = await axios.get(
+          `${import.meta.env.VITE_API_URL}/api/inventories`
+        );
+        
+        const uniqueCategories = [...new Set(data.map((item) => item.category))];
+        setCategories(uniqueCategories);
+      } catch (error) {
+        console.error("Error fetching inventories:", error);
+      }
+    };
+
+    fetchCategories();
+  }, []);
 
   const validateForm = () => {
     const newErrors = {};
@@ -29,19 +65,37 @@ const AddInventoryItem = () => {
 
     setErrors(newErrors);
 
-    if (Object.keys(newErrors).length === 0) {
-      return true;
-    } else {
-      return false;
-    }
+    return Object.keys(newErrors).length === 0;
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    if (validateForm()) {
-      // Submit form data to the backend
-      console.log("Form submitted:", formData);
-      // Add API call here
+
+    if (!validateForm()) {
+      return; 
+    }
+
+    try {
+      const requestBody = {
+        warehouse_id: warehouses.find((wh) => wh.warehouse_name === formData.warehouse)?.id,
+        item_name: formData.itemName,
+        description: formData.description,
+        category: formData.category,
+        status: formData.status,
+        quantity: parseInt(formData.quantity, 10), 
+      };
+
+      const response = await axios.post(
+        `${import.meta.env.VITE_API_URL}/api/inventories`,
+        requestBody
+      );
+
+      console.log("Inventory item created:", response.data);
+
+      navigate("/inventories");
+    } catch (error) {
+      console.error("Error creating inventory item:", error);
+      alert("Unable to create inventory item. Please try again.");
     }
   };
 
@@ -114,9 +168,11 @@ const AddInventoryItem = () => {
                 }`}
               >
                 <option value="">Please select</option>
-                <option value="Electronics">Electronics</option>
-                <option value="Clothing">Clothing</option>
-                <option value="Furniture">Furniture</option>
+                {categories.map((cat, index) => (
+                  <option key={index} value={cat}>
+                    {cat}
+                  </option>
+                ))}
               </select>
               {errors.category && (
                 <span className="add-inventory-item__error-message">
@@ -189,9 +245,12 @@ const AddInventoryItem = () => {
                   errors.warehouse ? "add-inventory-item__input--error" : ""
                 }`}
               >
-                <option value="">Please select</option> 
-                <option value="Warehouse A">Warehouse A</option> 
-                <option value="Warehouse B">Warehouse B</option>
+                <option value="">Please select</option>
+                {warehouses.map((wh) => (
+                  <option key={wh.id} value={wh.warehouse_name}>
+                    {wh.warehouse_name}
+                  </option>
+                ))}
               </select>
               {errors.warehouse && (
                 <span className="add-inventory-item__error-message">
