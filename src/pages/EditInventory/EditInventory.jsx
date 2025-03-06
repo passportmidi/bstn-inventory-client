@@ -1,3 +1,11 @@
+import Header from "../../components/Header/Header";
+
 export default function EditInventory() {
-    return <h1>EditInventory</h1>
+    return (
+      <>
+        <Header />
+        <h1>EditInventory</h1>
+      </>
+    );
+    
 }
