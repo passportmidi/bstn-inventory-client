@@ -1,16 +1,6 @@
 .warehouse {
-  &__grid {
+  &__row {
     display: grid;
+    grid-template-columns: repeat(5, 1fr);
   }
-  //   &__row {
-  //     display: flex;
-
-  //     & > div {
-  //         width: 20%;
-  //     }
-
-  //     &__actions {
-
-  //     }
-  //   }
 }
