@@ -1,0 +1,23 @@
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/variables" as *;
+
+.warehouse {
+  margin: 16px;
+  margin-top: -4rem;
+  border-radius: 3px;
+  box-shadow: 0px 2px 5px 0px #13182c1a;
+  z-index: 1;
+  background-color: $primary-white;
+
+  @include tablet {
+    margin: auto;
+    margin-top: -5rem;
+    max-width: 45rem;
+  }
+
+  @include desktop {
+    margin: auto;
+    margin-top: -5rem;
+    max-width: 70rem;
+  }
+}
