@@ -31,7 +31,10 @@ export default function InventoryDetailsInfo() {
       <div className="details">
         <div className="details__head">
           <div className="details__header">
-            <Link to="/inventory" className="details__header--back-link">
+            <Link
+              to={`/warehouse/${inventory.warehouse_id}`}
+              className="details__header--back-link"
+            >
               <img
                 className="details__header--back"
                 alt="back-icon"
@@ -91,7 +94,7 @@ export default function InventoryDetailsInfo() {
               </div>
               <div className="details__quantity">
                 <h3 className="details__subheader"> Quantity: </h3>
-                <p className="details__desc"> {inventory.quantity} </p>
+                <p className="details__desc "> {inventory.quantity} </p>
               </div>
             </div>
             <div className="details__warehouse">
