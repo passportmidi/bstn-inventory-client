@@ -92,7 +92,7 @@ const AddInventoryItem = () => {
       console.log("Inventory item created:", response.data);
 
 
-      navigate("/inventories");
+      navigate("/inventory");
     } catch (error) {
       console.error("Error creating inventory item:", error);
 
@@ -108,7 +108,7 @@ const AddInventoryItem = () => {
   return (
     <div className="add-inventory-item">
       <div className="add-inventory-item__header">
-        <Link to="/inventories" className="add-inventory-item__back-link">
+        <Link to="/inventory" className="add-inventory-item__back-link">
           <img
             src={arrowBackIcon}
             alt="Back"

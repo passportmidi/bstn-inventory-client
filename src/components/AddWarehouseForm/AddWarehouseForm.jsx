@@ -82,7 +82,7 @@ const AddWarehouse = () => {
 
       console.log("Warehouse created successfully:", response.data);
 
-      navigate("/warehouses");
+      navigate("/warehouse");
     } catch (error) {
       console.error("Error creating warehouse:", error);
       alert("Unable to create warehouse. Please try again.");
@@ -98,7 +98,7 @@ const AddWarehouse = () => {
     <>
       <div className="add-warehouse">
         <div className="add-warehouse__header">
-          <Link to="/" className="add-warehouse__back-link">
+          <Link to="/warehouse" className="add-warehouse__back-link">
             <img
               src={arrowBackIcon}
               alt="Back"
