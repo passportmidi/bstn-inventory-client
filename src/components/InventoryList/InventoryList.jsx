@@ -45,11 +45,12 @@ export default function InventoryList() {
               alt="search-icon"
             />
           </button>
-          <Link to={`/inventory/${id}/add`} className=" main__add-link">
+          <Link to={`/inventory/add`} className=" main__add-link">
             <div className=" main__add"> + Add New Item </div>
           </Link>
         </div>
       </div>
+
       <div className="list">
         <div className="list__subheaders">
           <div className="list__header-item">
@@ -133,7 +134,10 @@ export default function InventoryList() {
                   alt="delete-icon"
                   src={deleteButton}
                 />
-                <Link to={`/inventory/${id}/edit`} className="list__item-edit">
+                <Link
+                  to={`/inventory/${inventory.id}/edit`}
+                  className="list__item-edit"
+                >
                   <img
                     className="list__item-icon"
                     alt="edit-icon"
