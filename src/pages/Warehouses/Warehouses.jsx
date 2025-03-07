@@ -2,6 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import deleteLogo from "../../assets/icons/delete_outline-24px.svg";
 import editLogo from "../../assets/icons/edit-24px.svg";
+import chevronLogo from "../../assets/icons/chevron_right-24px.svg";
 import "./Warehouses.scss";
 
 const baseURL = import.meta.env.VITE_API_URL;
@@ -42,6 +43,7 @@ export default function Warehouses() {
                   </div>
                   <div className="warehouse__cell-item warehouse__name">
                     {warehouse.warehouse_name}
+                    <img src={chevronLogo} alt="Arrow" />
                   </div>
                 </div>
                 <div className="warehouse__cell">
