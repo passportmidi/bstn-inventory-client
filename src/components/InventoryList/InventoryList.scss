@@ -87,6 +87,9 @@
       padding: 1rem 2rem;
     }
   }
+  &__sort {
+    height: 14px;
+  }
 
   &__header-item {
     display: none;
@@ -104,7 +107,6 @@
     @include table-header;
     color: $secondary-slate;
     text-transform: uppercase;
-    padding-bottom: 0.25rem;
 
     &--mobile {
       @include table-header;
