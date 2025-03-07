@@ -104,13 +104,13 @@ const EditWarehouse = () => {
   };
 
   if (updated) {
-    navigate("/warehouses");
+    navigate("/warehouse");
   }
 
   return (
     <div className="add-warehouse">
       <div className="add-warehouse__header">
-        <Link to="/warehouses" className="add-warehouse__back-link">
+        <Link to="/warehouse" className="add-warehouse__back-link">
           <img
             src={arrowBackIcon}
             alt="Back"
