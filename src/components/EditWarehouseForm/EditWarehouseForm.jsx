@@ -1,12 +1,12 @@
 import { useState, useEffect } from "react";
-import { Link, useParams, useNavigate } from "react-router-dom"; 
+import { Link, useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
-import "../AddWarehouseForm/AddWarehouseFOrm.scss"; 
+import "../AddWarehouseForm/AddWarehouseForm.scss";
 import arrowBackIcon from "../../assets/icons/arrow_back-24px.svg";
 
 const EditWarehouse = () => {
-    const navigate = useNavigate(); 
-  const { id } = useParams(); 
+  const navigate = useNavigate();
+  const { id } = useParams();
   const [formData, setFormData] = useState({
     warehouseName: "",
     streetAddress: "",
@@ -19,7 +19,7 @@ const EditWarehouse = () => {
   });
 
   const [errors, setErrors] = useState({});
-  const [updated, setUpdated] = useState(false); 
+  const [updated, setUpdated] = useState(false);
 
   useEffect(() => {
     const fetchWarehouse = async () => {
@@ -91,7 +91,7 @@ const EditWarehouse = () => {
           formData
         );
         console.log("Warehouse updated successfully!");
-        setUpdated(true); 
+        setUpdated(true);
       } catch (error) {
         console.error("Error updating warehouse:", error);
       }
@@ -131,7 +131,9 @@ const EditWarehouse = () => {
                 name="warehouseName"
                 value={formData.warehouseName}
                 onChange={handleChange}
-                className={`add-warehouse__input ${errors.warehouseName ? "add-warehouse__input--error" : ""}`}
+                className={`add-warehouse__input ${
+                  errors.warehouseName ? "add-warehouse__input--error" : ""
+                }`}
                 placeholder="Warehouse Name"
               />
               {errors.warehouseName && (
@@ -147,7 +149,9 @@ const EditWarehouse = () => {
                 name="streetAddress"
                 value={formData.streetAddress}
                 onChange={handleChange}
-                className={`add-warehouse__input ${errors.streetAddress ? "add-warehouse__input--error" : ""}`}
+                className={`add-warehouse__input ${
+                  errors.streetAddress ? "add-warehouse__input--error" : ""
+                }`}
                 placeholder="Street Address"
               />
               {errors.streetAddress && (
@@ -163,7 +167,9 @@ const EditWarehouse = () => {
                 name="city"
                 value={formData.city}
                 onChange={handleChange}
-                className={`add-warehouse__input ${errors.city ? "add-warehouse__input--error" : ""}`}
+                className={`add-warehouse__input ${
+                  errors.city ? "add-warehouse__input--error" : ""
+                }`}
                 placeholder="City"
               />
               {errors.city && (
@@ -179,7 +185,9 @@ const EditWarehouse = () => {
                 name="country"
                 value={formData.country}
                 onChange={handleChange}
-                className={`add-warehouse__input ${errors.country ? "add-warehouse__input--error" : ""}`}
+                className={`add-warehouse__input ${
+                  errors.country ? "add-warehouse__input--error" : ""
+                }`}
                 placeholder="Country"
               />
               {errors.country && (
@@ -200,7 +208,9 @@ const EditWarehouse = () => {
                 name="contactName"
                 value={formData.contactName}
                 onChange={handleChange}
-                className={`add-warehouse__input ${errors.contactName ? "add-warehouse__input--error" : ""}`}
+                className={`add-warehouse__input ${
+                  errors.contactName ? "add-warehouse__input--error" : ""
+                }`}
                 placeholder="Contact Name"
               />
               {errors.contactName && (
@@ -216,7 +226,9 @@ const EditWarehouse = () => {
                 name="position"
                 value={formData.position}
                 onChange={handleChange}
-                className={`add-warehouse__input ${errors.position ? "add-warehouse__input--error" : ""}`}
+                className={`add-warehouse__input ${
+                  errors.position ? "add-warehouse__input--error" : ""
+                }`}
                 placeholder="Position"
               />
               {errors.position && (
@@ -232,7 +244,9 @@ const EditWarehouse = () => {
                 name="phoneNumber"
                 value={formData.phoneNumber}
                 onChange={handleChange}
-                className={`add-warehouse__input ${errors.phoneNumber ? "add-warehouse__input--error" : ""}`}
+                className={`add-warehouse__input ${
+                  errors.phoneNumber ? "add-warehouse__input--error" : ""
+                }`}
                 placeholder="Phone Number"
               />
               {errors.phoneNumber && (
@@ -248,7 +262,9 @@ const EditWarehouse = () => {
                 name="email"
                 value={formData.email}
                 onChange={handleChange}
-                className={`add-warehouse__input ${errors.email ? "add-warehouse__input--error" : ""}`}
+                className={`add-warehouse__input ${
+                  errors.email ? "add-warehouse__input--error" : ""
+                }`}
                 placeholder="Email"
               />
               {errors.email && (
