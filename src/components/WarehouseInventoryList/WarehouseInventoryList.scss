@@ -1,2 +1,197 @@
 @use "../../styles/partials/mixins" as *;
 @use "../../styles/partials/variables" as *;
+
+.list {
+  &__subheaders {
+    display: none;
+    @include tablet {
+      padding: 1rem 1.5rem;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      background-color: #f7f8f9b2;
+    }
+
+    @include desktop {
+      padding: 1rem 2rem;
+    }
+  }
+
+  &__header-item {
+    display: none;
+
+    @include tablet {
+      display: flex;
+      flex-direction: row;
+      gap: 8px;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+
+  &__subheader {
+    @include table-header;
+    color: $secondary-slate;
+    text-transform: uppercase;
+    padding-bottom: 0.25rem;
+
+    &--mobile {
+      @include table-header;
+      color: $secondary-slate;
+      text-transform: uppercase;
+      padding-bottom: 0.25rem;
+
+      @include tablet {
+        display: none;
+      }
+    }
+  }
+
+  &__sort {
+    // styles for .list__sort (the sort icons)
+  }
+
+  &__row {
+    padding: 1rem;
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    border-top: solid 1px $secondary-cloud;
+
+    @include tablet {
+      padding: 1rem 1.5rem;
+      flex-direction: row;
+      justify-content: space-between;
+    }
+
+    @include desktop {
+      padding: 1rem 2rem;
+    }
+  }
+
+  &__item-info {
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 1rem;
+
+    @include tablet {
+      flex-direction: row;
+      justify-content: space-between;
+      width: 40%;
+      align-items: center;
+      padding-bottom: 0rem;
+    }
+
+    @include desktop {
+      width: 35%;
+    }
+  }
+
+  &__item-grp {
+    padding-bottom: 1rem;
+
+    @include tablet {
+      padding-bottom: 0rem;
+    }
+  }
+
+  &__item-name {
+    @include body-medium;
+    color: $primary-indigo;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  &__item-link {
+    text-decoration: none;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 4px;
+  }
+
+  &__desc {
+    @include body-medium;
+    color: $primary-black;
+  }
+
+  &__item-status-qty {
+    display: flex;
+    flex-direction: column;
+    margin-right: 3rem;
+
+    @include tablet {
+      flex-direction: row;
+      justify-content: space-between;
+      width: 30%;
+      margin-right: unset;
+      align-items: center;
+    }
+  }
+
+  &__stock {
+    @include table-header;
+    text-transform: uppercase;
+    height: 1.5rem;
+    padding: 0.5rem;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: max-content;
+    margin-bottom: 1rem;
+  }
+
+  &__quantity {
+    // styles for .list__quantity (quantity field)
+  }
+
+  &__item-icons {
+    flex-basis: 100%;
+    display: flex;
+    justify-content: space-between;
+
+    @include tablet {
+      flex-basis: unset;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+  }
+
+  &__item-edit {
+    cursor: pointer;
+  }
+
+  &__item-delete {
+    cursor: pointer;
+  }
+
+  &__item-icon {
+    // styles for .list__item-icon (edit and delete icons)
+  }
+}
+
+.in-stock {
+  color: #158463;
+  background-color: rgb(21, 132, 99, 0.07);
+
+  @include tablet {
+    margin-bottom: 0rem;
+  }
+}
+
+.out-of-stock {
+  color: #c94515;
+  background-color: rgb(201, 69, 21, 0.07);
+
+  @include tablet {
+    margin-bottom: 0rem;
+  }
+}

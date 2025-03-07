@@ -4,6 +4,8 @@ export const baseURL = import.meta.env.VITE_API_URL;
 import deleteButton from "../../assets/icons/delete_outline-24px.svg";
 import editButton from "../../assets/icons/edit-24px.svg";
 import sortButton from "../../assets/icons/sort-24px.svg";
+import chevronButton from "../../assets/icons/chevron_right-24px.svg";
+
 import "./WarehouseInventoryList.scss";
 import { Link, useParams } from "react-router-dom";
 
@@ -36,6 +38,9 @@ export default function WarehouseInventoryList() {
       console.log("Error deleting inventory item:", e);
     }
   };
+
+  const isMobile = window.innerWidth <= 768; // Determines if the screen is mobile or not
+
   return (
     <>
       <div className="list">
@@ -60,37 +65,73 @@ export default function WarehouseInventoryList() {
             <h4 className="list__subheader">Actions</h4>
           </div>
         </div>
-      </div>
-      {inventoryList.map((inventory) => {
-        return (
-          <div className="list__row" key={inventory.id}>
-            <div className="list__item-content">
-              <span>{inventory.item_name}</span>
-              <span>{inventory.category}</span>
-              <span>{inventory.status}</span>
-              <span>{inventory.quantity}</span>
-              <Link to={`/inventory/${id}/edit`} className="list__item-edit">
+        {inventoryList.map((inventory) => {
+          return (
+            <div className="list__row" key={inventory.id}>
+              {/* <div className="list__item"> */}
+              <div className="list__item-info">
+                <h4 className="list__subheader--mobile">Inventory Item</h4>
+                <div className="list__item-grp">
+                  <Link
+                    to={`/inventory/${inventory.id}`}
+                    className="list__item-link"
+                  >
+                    <span className="list__item-name">
+                      {inventory.item_name}
+                    </span>
+
+                    <img
+                      className="list__item-icon"
+                      alt="chevron right-icon"
+                      src={chevronButton}
+                    />
+                  </Link>
+                </div>
+
+                <h4 className="list__subheader--mobile">Category</h4>
+                <span className="list__desc">{inventory.category}</span>
+              </div>
+
+              <div className="list__item-status-qty">
+                <h4 className="list__subheader--mobile">Status</h4>
+                <span
+                  className={`list__stock ${
+                    inventory.status === "In Stock"
+                      ? "in-stock"
+                      : "out-of-stock"
+                  }`}
+                >
+                  {inventory.status}
+                </span>{" "}
+                <h4 className="list__subheader--mobile"> Qty</h4>
+                <span className="list__desc">{inventory.quantity}</span>
+                {/* </div> */}
+              </div>
+
+              <div className="list__item-icons">
                 <img
-                  className="list__item-icon"
-                  alt="edit-icon"
-                  src={editButton}
+                  onClick={() => handleDelete(inventory.id)}
+                  className="list__item-delete list__item-icon"
+                  alt="delete-icon"
+                  src={deleteButton}
                 />
-              </Link>
-              {/* FIXME: where does the delete button point to? is it an onclick event? */}
-              <img
-                onClick={() => handleDelete(inventory.id)}
-                className="list__item-delete list__item-icon"
-                alt="edit-icon"
-                src={deleteButton}
-              />
+                <Link to={`/inventory/${id}/edit`} className="list__item-edit">
+                  <img
+                    className="list__item-icon"
+                    alt="edit-icon"
+                    src={editButton}
+                  />
+                </Link>
+              </div>
             </div>
-          </div>
-        );
-      })}
+          );
+        })}
+      </div>
     </>
   );
-  {
-    /* <div class="shows__box">
+}
+{
+  /* <div class="shows__box">
     <h3 class="shows__header">Date</h3>
     <div class="shows__date">Monday, Sep 09, 2024</div>
     <h3 class="shows__header">Venue</h3>
@@ -99,5 +140,4 @@ export default function WarehouseInventoryList() {
     <div class="shows__location">San Francisco, CA</div>
     <button class="shows__button">Buy Tickets</button>
   </div>; */
-  }
 }

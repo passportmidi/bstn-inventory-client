@@ -1,10 +1,14 @@
 import InventoryDetailsInfo from "../../components/InventoryDetails/InventoryDetails";
+import Header from "../../components/Header/Header";
+import "./InventoryDetail.scss";
 
 export default function InventoryDetails() {
   return (
     <>
-      <h1>InventoryDetail</h1>;
-      <InventoryDetailsInfo />
+      <Header />
+      <div className="inventory">
+        <InventoryDetailsInfo />
+      </div>
     </>
   );
 }

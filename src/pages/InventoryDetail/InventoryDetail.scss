@@ -1,0 +1,21 @@
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/variables" as *;
+
+.inventory {
+  margin: 16px;
+  margin-top: -4rem;
+  border-radius: 3px;
+  box-shadow: 0px 2px 5px 0px #13182c1a;
+  z-index: 1;
+  background-color: $primary-white;
+
+  @include tablet {
+    margin: 2rem;
+    margin-top: -5rem;
+  }
+
+  @include desktop {
+    margin: 7rem;
+    margin-top: -5rem;
+  }
+}
