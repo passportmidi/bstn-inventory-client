@@ -88,6 +88,9 @@
       justify-content: start;
     }
   }
+  &__link {
+    text-decoration: none;
+  }
   &__cell {
     padding: 8px 0;
     @include tablet {

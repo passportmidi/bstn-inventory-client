@@ -5,6 +5,7 @@ import editLogo from "../../assets/icons/edit-24px.svg";
 import chevronLogo from "../../assets/icons/chevron_right-24px.svg";
 import sortLogo from "../../assets/icons/sort-24px.svg";
 import "./Warehouses.scss";
+import { Link } from "react-router-dom";
 
 const baseURL = import.meta.env.VITE_API_URL;
 
@@ -47,10 +48,15 @@ export default function Warehouses() {
                       alt="Sort"
                     />
                   </div>
-                  <div className="warehouse__cell-item warehouse__name">
-                    {warehouse.warehouse_name}
-                    <img src={chevronLogo} alt="Arrow" />
-                  </div>
+                  <Link
+                    to={`/warehouse/${warehouse.id}`}
+                    className="warehouse__link"
+                  >
+                    <div className="warehouse__cell-item warehouse__name">
+                      {warehouse.warehouse_name}
+                      <img src={chevronLogo} alt="Arrow" />
+                    </div>
+                  </Link>
                 </div>
                 <div className="warehouse__cell">
                   <div className="warehouse__cell-label">
@@ -102,8 +108,18 @@ export default function Warehouses() {
                   Actions
                 </div>
                 <div className="warehouse__cell-item warehouse__actions">
-                  <img src={deleteLogo} alt="Delete" />
-                  <img src={editLogo} alt="Edit" />
+                  <Link
+                    to={`/warehouse/${warehouse.id}/delete`}
+                    className="warehouse__link"
+                  >
+                    <img src={deleteLogo} alt="Delete" />
+                  </Link>
+                  <Link
+                    to={`/warehouse/${warehouse.id}/edit`}
+                    className="warehouse__link"
+                  >
+                    <img src={editLogo} alt="Edit" />
+                  </Link>
                 </div>
               </div>
             </div>
