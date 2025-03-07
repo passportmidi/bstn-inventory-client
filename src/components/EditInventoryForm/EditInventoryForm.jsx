@@ -121,7 +121,7 @@ const EditInventoryItem = () => {
 
       console.log("Inventory updated successfully!");
 
-      navigate("/inventories");
+      navigate("/inventory");
     } catch (error) {
       console.error("Error updating inventory:", error);
       alert("Unable to update inventory item. Please try again.");
@@ -136,7 +136,7 @@ const EditInventoryItem = () => {
   return (
     <div className="add-inventory-item">
       <div className="add-inventory-item__header">
-        <Link to="/inventories" className="add-inventory-item__back-link">
+        <Link to="/inventory" className="add-inventory-item__back-link">
           <img
             src={arrowBackIcon}
             alt="Back"
