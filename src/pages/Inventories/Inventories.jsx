@@ -4,7 +4,7 @@ import "./Inventories.scss";
 export default function Inventories() {
   return (
     <>
-      <div className="warehouse">
+      <div className="inventory-list">
         <InventoryList />
       </div>
     </>
