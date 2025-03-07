@@ -137,7 +137,7 @@ const EditInventoryItem = () => {
   return (
     <div className="add-inventory-item">
       <div className="add-inventory-item__header">
-        <Link to="/inventory" className="add-inventory-item__back-link">
+        <Link to="/inventories" className="add-inventory-item__back-link">
           <img
             src={arrowBackIcon}
             alt="Back"
