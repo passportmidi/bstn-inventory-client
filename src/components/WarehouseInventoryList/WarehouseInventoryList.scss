@@ -47,10 +47,6 @@
     }
   }
 
-  &__sort {
-    // styles for .list__sort (the sort icons)
-  }
-
   &__row {
     padding: 1rem;
     position: relative;
@@ -127,14 +123,12 @@
   &__item-status-qty {
     display: flex;
     flex-direction: column;
-    // margin-right: 3rem;
     width: 40%;
 
     @include tablet {
       flex-direction: row;
       justify-content: space-between;
       width: 32%;
-      // margin-right: unset;
       align-items: center;
     }
   }
@@ -182,8 +176,6 @@
       justify-content: flex-start;
       align-items: flex-start;
       width: 5rem;
-
-      // this doesn't work FIXME:
     }
   }
   &__item-icons {
@@ -206,11 +198,7 @@
   &__item-delete {
     cursor: pointer;
     @include desktop {
-      //   padding-right: 4px;
     }
-  }
-
-  &__item-icon {
   }
 }
 

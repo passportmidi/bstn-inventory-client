@@ -39,8 +39,6 @@ export default function WarehouseInventoryList() {
     }
   };
 
-  const isMobile = window.innerWidth <= 768; // Determines if the screen is mobile or not
-
   return (
     <>
       <div className="list">
@@ -68,7 +66,6 @@ export default function WarehouseInventoryList() {
         {inventoryList.map((inventory) => {
           return (
             <div className="list__row" key={inventory.id}>
-              {/* <div className="list__item"> */}
               <div className="list__item-info">
                 <h4 className="list__subheader--mobile">Inventory Item</h4>
                 <div className="list__item-grp">
@@ -109,7 +106,6 @@ export default function WarehouseInventoryList() {
                 <span className="list__desc list__qty">
                   {inventory.quantity}
                 </span>
-                {/* </div> */}
               </div>
 
               <div className="list__item-icons">
