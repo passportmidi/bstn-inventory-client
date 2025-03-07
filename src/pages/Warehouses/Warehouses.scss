@@ -39,6 +39,7 @@
     grid-template-columns: repeat(2, 1fr);
     padding: 16px;
     border-top: 1px solid $secondary-cloud;
+    @include body-medium;
     @include tablet {
       padding: 24px;
       display: grid;
