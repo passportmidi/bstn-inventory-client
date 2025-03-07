@@ -4,6 +4,7 @@ import deleteLogo from "../../assets/icons/delete_outline-24px.svg";
 import editLogo from "../../assets/icons/edit-24px.svg";
 import "./Warehouses.scss";
 import Header from "../../components/Header/Header";
+import Footer from "../../components/Footer/Footer";
 
 const baseURL = import.meta.env.VITE_API_URL;
 
@@ -75,6 +76,7 @@ export default function Warehouses() {
           </div>
         );
       })}
+      <Footer />
     </>
   );
 }
