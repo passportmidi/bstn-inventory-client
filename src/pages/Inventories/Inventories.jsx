@@ -1,3 +1,12 @@
-export default function Inventory() {
-    return <h1>Inventory</h1>
+import InventoryList from "../../components/InventoryList/InventoryList";
+import "./Inventories.scss";
+
+export default function Inventories() {
+  return (
+    <>
+      <div className="inventory-list">
+        <InventoryList />
+      </div>
+    </>
+  );
 }

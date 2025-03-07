@@ -1,0 +1,320 @@
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/variables" as *;
+
+.main {
+  padding: 1rem;
+  padding-bottom: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  @include tablet {
+    padding: 1.5rem;
+    flex-direction: row;
+    align-items: center;
+  }
+
+  @include desktop {
+    padding: 2rem;
+  }
+  &__header {
+    padding-bottom: 1rem;
+    &--name {
+      @include page-header;
+    }
+
+    @include tablet {
+      padding-bottom: unset;
+    }
+  }
+
+  &__actions {
+    display: flex;
+    flex-direction: column;
+
+    @include tablet {
+      flex-direction: row;
+      align-items: center;
+      gap: 1rem;
+    }
+  }
+
+  &__search {
+    margin-bottom: 1rem;
+    display: flex;
+    justify-content: space-between;
+    border-radius: 20px;
+    border: 1px solid $secondary-cloud;
+    height: 38px;
+    padding: 0rem 1rem;
+    background-color: $primary-white;
+    align-items: center;
+
+    @include tablet {
+      margin: unset;
+      width: 20vw;
+    }
+
+    &--desc {
+      @include body-medium;
+      color: $secondary-slate;
+    }
+
+    &--icon {
+    }
+  }
+
+  &__add-link {
+  }
+
+  &__add {
+    text-decoration: none;
+    @include primary-button;
+  }
+}
+
+.list {
+  &__subheaders {
+    display: none;
+    @include tablet {
+      padding: 1rem 1.5rem;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      background-color: #f7f8f9b2;
+    }
+
+    @include desktop {
+      padding: 1rem 2rem;
+    }
+  }
+
+  &__header-item {
+    display: none;
+
+    @include tablet {
+      display: flex;
+      flex-direction: row;
+      gap: 8px;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+
+  &__subheader {
+    @include table-header;
+    color: $secondary-slate;
+    text-transform: uppercase;
+    padding-bottom: 0.25rem;
+
+    &--mobile {
+      @include table-header;
+      color: $secondary-slate;
+      text-transform: uppercase;
+      padding-bottom: 0.25rem;
+
+      @include tablet {
+        display: none;
+      }
+    }
+  }
+
+  &__row {
+    padding: 1rem;
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    border-top: solid 1px $secondary-cloud;
+
+    @include tablet {
+      padding: 1rem 1.5rem;
+      flex-direction: row;
+      justify-content: space-between;
+    }
+
+    @include desktop {
+      padding: 1rem 2rem;
+
+      &:hover {
+        background-color: rgb(46, 102, 229, 0.1);
+      }
+    }
+  }
+
+  &__item-info {
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 1rem;
+
+    @include tablet {
+      flex-direction: row;
+      justify-content: space-between;
+      width: 36%;
+      align-items: center;
+      padding-bottom: 0rem;
+    }
+
+    @include desktop {
+      width: 30%;
+    }
+  }
+
+  &__item-grp {
+    padding-bottom: 1rem;
+
+    @include tablet {
+      padding-bottom: 0rem;
+    }
+  }
+
+  &__item-name {
+    @include body-medium;
+    color: $primary-indigo;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  &__item-link {
+    text-decoration: none;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 4px;
+  }
+
+  &__desc {
+    @include body-medium;
+    color: $primary-black;
+  }
+
+  &__item-status-qty-wh {
+    display: flex;
+    flex-direction: column;
+    width: 40%;
+
+    @include tablet {
+      flex-direction: row;
+      justify-content: space-between;
+      width: 45%;
+      align-items: center;
+    }
+
+    @include desktop {
+      width: 43%;
+    }
+  }
+  &__stock-area {
+    @include tablet {
+      width: 4.8rem;
+    }
+  }
+  &__stock {
+    @include table-header;
+    text-transform: uppercase;
+    height: 1.5rem;
+    padding: 0.5rem;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: max-content;
+    margin-bottom: 1rem;
+  }
+
+  &__ctgy {
+    @include tablet {
+      display: flex;
+      justify-content: flex-start;
+      align-items: flex-start;
+      width: 5rem;
+    }
+
+    @include desktop {
+      display: flex;
+      justify-content: flex-start;
+      align-items: flex-start;
+      width: 5rem;
+    }
+  }
+
+  &__qty {
+    margin-bottom: 1rem;
+    @include tablet {
+      display: flex;
+      justify-content: flex-start;
+      align-items: flex-start;
+      width: 2.5rem;
+      margin-bottom: unset;
+    }
+
+    @include desktop {
+      display: flex;
+      justify-content: flex-start;
+      align-items: flex-start;
+      width: 3rem;
+    }
+  }
+
+  &__whs {
+    @include tablet {
+      display: flex;
+      justify-content: flex-start;
+      align-items: flex-start;
+      width: 5.8rem;
+      margin-bottom: unset;
+    }
+
+    @include desktop {
+      display: flex;
+      justify-content: flex-start;
+      align-items: flex-start;
+      width: 5.7rem;
+    }
+  }
+  &__item-icons {
+    flex-basis: 100%;
+    display: flex;
+    justify-content: space-between;
+
+    @include tablet {
+      flex-basis: unset;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+  }
+
+  &__item-edit {
+    cursor: pointer;
+  }
+
+  &__item-delete {
+    cursor: pointer;
+    @include desktop {
+    }
+  }
+}
+
+.in-stock {
+  color: #158463;
+  background-color: rgb(21, 132, 99, 0.07);
+
+  @include tablet {
+    margin-bottom: 0rem;
+  }
+}
+
+.out-of-stock {
+  color: #c94515;
+  background-color: rgb(201, 69, 21, 0.07);
+
+  @include tablet {
+    margin-bottom: 0rem;
+  }
+}
