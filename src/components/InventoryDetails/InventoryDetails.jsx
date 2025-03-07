@@ -32,7 +32,7 @@ export default function InventoryDetailsInfo() {
         <div className="details__head">
           <div className="details__header">
             <Link
-              to={`/warehouse/${inventory.warehouse_id}`}
+              to={`/inventory`}
               className="details__header--back-link"
             >
               <img
