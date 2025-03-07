@@ -3,8 +3,6 @@ import { useEffect, useState } from "react";
 import deleteLogo from "../../assets/icons/delete_outline-24px.svg";
 import editLogo from "../../assets/icons/edit-24px.svg";
 import "./Warehouses.scss";
-import Header from "../../components/Header/Header";
-import Footer from "../../components/Footer/Footer";
 
 const baseURL = import.meta.env.VITE_API_URL;
 
@@ -37,9 +35,9 @@ export default function Warehouses() {
         {warehouses.map((warehouse) => {
           return (
             <div className="warehouse__row" key={warehouse.id}>
-              <div class="warehouse__column">
-                <div class="warehouse__cell">
-                  <div className="warehouse__cell-label">Warehouse</div>
+              <div className="warehouse__column">
+                <div className="warehouse__cell">
+                  <div className="warehouse__cell-label warehouse__cell-label--first">Warehouse</div>
                   <div className="warehouse__cell-item warehouse__name">
                     {warehouse.warehouse_name}
                   </div>
@@ -49,7 +47,7 @@ export default function Warehouses() {
                   <div className="warehouse__cell-item warehouse__address">{`${warehouse.address}, ${warehouse.city}, ${warehouse.country}`}</div>
                 </div>
               </div>
-              <div class="warehouse__column">
+              <div className="warehouse__column">
                 <div className="warehouse__cell">
                   <div className="warehouse__cell-label">Contact Name</div>
                   <div className="warehouse__cell-item warehouse__contact">
@@ -71,7 +69,7 @@ export default function Warehouses() {
                 </div>
               </div>
               <div className="warehouse__cell warehouse__cell--actions">
-                <div className="warehouse__cell-label">Actions</div>
+                <div className="warehouse__cell-label warehouse__cell-label--last">Actions</div>
                 <div className="warehouse__cell-item warehouse__actions">
                   <img src={deleteLogo} alt="Delete" />
                   <img src={editLogo} alt="Edit" />
@@ -81,7 +79,6 @@ export default function Warehouses() {
           );
         })}
       </div>
-      <Footer />
     </>
   );
 }
