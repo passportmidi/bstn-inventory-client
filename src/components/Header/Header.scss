@@ -59,29 +59,25 @@
       padding: 0.5rem 2.5rem;
       border-radius: 9999px;
 
-
       @include tablet {
         padding: 0.5rem 0;
-        
-
       }
     }
 
     // when links are active
-    .active-link {
+    .active {
       color: $primary-white;
       background-color: $primary-black;
 
       @include tablet {
         padding: 0.5rem 1rem;
         gap: 1.5rem;
-
       }
     }
 
     @include tablet {
-        width: fit-content;
-        gap: 1.4rem;
+      width: fit-content;
+      gap: 1.4rem;
     }
   }
 }
@@ -89,8 +85,8 @@
 .gap {
   background-color: $background-graphite;
   height: 4rem;
-//   border-top: 1px solid white;
-    @include tablet {
-        height: 5rem;
-    }
+  //   border-top: 1px solid white;
+  @include tablet {
+    height: 5rem;
+  }
 }

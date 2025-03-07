@@ -10,11 +10,11 @@ export default function Header() {
           <img src={logo1} alt="wordmark" />
         </div>
         <div className="nav__links">
-          <NavLink to={`/`} className={({ isActive }) => `nav-link ${isActive ? "active-link" : ""}`}>
+          <NavLink to="/warehouse" className="nav-link">
             Warehouses
           </NavLink>
 
-          <NavLink to={`/inventories`} className={({ isActive }) => `nav-link ${isActive ? "active-link" : ""}`}>
+          <NavLink to="/inventory" className="nav-link">
             Inventory
           </NavLink>
         </div>
