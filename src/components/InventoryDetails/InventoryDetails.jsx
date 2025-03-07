@@ -99,8 +99,7 @@ export default function InventoryDetailsInfo() {
             </div>
             <div className="details__warehouse">
               <h3 className="details__subheader"> Warehouse: </h3>
-              <p className="details__desc"> {inventory.warehouse_id} </p>
-              {/* FIXME: i need warehouse name not ID...do i have to join my table? or can i pull from another query? */}
+              <p className="details__desc"> {inventory.warehouse_name} </p>
             </div>
           </div>
         </div>
