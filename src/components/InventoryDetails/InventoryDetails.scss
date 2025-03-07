@@ -74,7 +74,7 @@
 
     @include tablet {
       @include primary-button();
-      gap: 10px;
+      gap: 8px;
       cursor: pointer;
       display: flex;
       align-items: center;
