@@ -37,7 +37,9 @@ export default function Warehouses() {
             <div className="warehouse__row" key={warehouse.id}>
               <div className="warehouse__column">
                 <div className="warehouse__cell">
-                  <div className="warehouse__cell-label warehouse__cell-label--first">Warehouse</div>
+                  <div className="warehouse__cell-label warehouse__cell-label--first">
+                    Warehouse
+                  </div>
                   <div className="warehouse__cell-item warehouse__name">
                     {warehouse.warehouse_name}
                   </div>
@@ -58,18 +60,20 @@ export default function Warehouses() {
                   <div className="warehouse__cell-label">
                     Contact Information
                   </div>
-                  <div className="warehouse__contact-info">
-                    <div className="warehouse__cell-item warehouse__phone">
+                  <div className="warehouse__cell-item warehouse__contact-info">
+                    <div className="warehouse__phone">
                       {warehouse.contact_phone}
                     </div>
-                    <div className="warehouse__cell-item warehouse__email">
+                    <div className="warehouse__email">
                       {warehouse.contact_email}
                     </div>
                   </div>
                 </div>
               </div>
               <div className="warehouse__cell warehouse__cell--actions">
-                <div className="warehouse__cell-label warehouse__cell-label--last">Actions</div>
+                <div className="warehouse__cell-label warehouse__cell-label--last">
+                  Actions
+                </div>
                 <div className="warehouse__cell-item warehouse__actions">
                   <img src={deleteLogo} alt="Delete" />
                   <img src={editLogo} alt="Edit" />

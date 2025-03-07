@@ -42,6 +42,11 @@
 
       &:nth-of-type(2) {
         border-top: none;
+        padding-top: 0;
+
+        .warehouse__cell-item {
+          padding-bottom: 24px;
+        }
       }
     }
   }
@@ -54,6 +59,18 @@
   &__row:nth-of-type(n + 3) &__cell-label {
     @include tablet {
       display: none;
+    }
+  }
+  &__contact-info {
+    flex-direction: column;
+    align-items: start !important;
+    justify-content: center;
+  }
+  &__phone,
+  &__email {
+    @include tablet {
+      display: flex;
+      justify-content: start;
     }
   }
   &__cell {
