@@ -134,14 +134,3 @@ export default function WarehouseInventoryList() {
     </>
   );
 }
-{
-  /* <div class="shows__box">
-    <h3 class="shows__header">Date</h3>
-    <div class="shows__date">Monday, Sep 09, 2024</div>
-    <h3 class="shows__header">Venue</h3>
-    <div class="shows__venue">Ronald Lane</div>
-    <h3 class="shows__header">Location</h3>
-    <div class="shows__location">San Francisco, CA</div>
-    <button class="shows__button">Buy Tickets</button>
-  </div>; */
-}
