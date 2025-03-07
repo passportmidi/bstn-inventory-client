@@ -68,6 +68,10 @@
 
     @include desktop {
       padding: 1rem 2rem;
+
+      &:hover {
+        background-color: rgb(46, 102, 229, 0.1);
+      }
     }
   }
 
@@ -128,7 +132,7 @@
     @include tablet {
       flex-direction: row;
       justify-content: space-between;
-      width: 30%;
+      width: 32%;
       margin-right: unset;
       align-items: center;
     }
@@ -153,7 +157,7 @@
       display: flex;
       justify-content: flex-start;
       align-items: flex-start;
-      width: 5.5rem;
+      width: 7.5rem;
     }
   }
 
@@ -162,52 +166,53 @@
       display: flex;
       justify-content: flex-start;
       align-items: flex-start;
-      width: 5rem;
+      width: 7rem;
 
       // this doesn't work FIXME:
     }
-    &__item-icons {
-      flex-basis: 100%;
+  }
+  &__item-icons {
+    flex-basis: 100%;
+    display: flex;
+    justify-content: space-between;
+
+    @include tablet {
+      flex-basis: unset;
       display: flex;
-      justify-content: space-between;
-
-      @include tablet {
-        flex-basis: unset;
-        display: flex;
-        align-items: center;
-        gap: 1rem;
-      }
-    }
-
-    &__item-edit {
-      cursor: pointer;
-    }
-
-    &__item-delete {
-      cursor: pointer;
-      padding-right: 4px;
-    }
-
-    &__item-icon {
-      // styles for .list__item-icon (edit and delete icons)
+      align-items: center;
+      gap: 0.5rem;
     }
   }
 
-  .in-stock {
-    color: #158463;
-    background-color: rgb(21, 132, 99, 0.07);
+  &__item-edit {
+    cursor: pointer;
+  }
 
-    @include tablet {
-      margin-bottom: 0rem;
+  &__item-delete {
+    cursor: pointer;
+    @include desktop {
+      //   padding-right: 4px;
     }
   }
 
-  .out-of-stock {
-    color: #c94515;
-    background-color: rgb(201, 69, 21, 0.07);
+  &__item-icon {
+  }
+}
 
-    @include tablet {
-      margin-bottom: 0rem;
-    }
+.in-stock {
+  color: #158463;
+  background-color: rgb(21, 132, 99, 0.07);
+
+  @include tablet {
+    margin-bottom: 0rem;
+  }
+}
+
+.out-of-stock {
+  color: #c94515;
+  background-color: rgb(201, 69, 21, 0.07);
+
+  @include tablet {
+    margin-bottom: 0rem;
   }
 }
