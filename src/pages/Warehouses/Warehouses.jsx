@@ -1,12 +1,3 @@
-import Footer from "../../components/Footer/Footer"
-import Header from "../../components/Header/Header"
-
-
 export default function Warehouses() {
-    return (
-        <>
-        <Header />
-        <Footer />
-        </>
-    )
+  return <h1>Warehouses</h1>;
 }
