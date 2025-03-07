@@ -6,11 +6,14 @@ import chevronLogo from "../../assets/icons/chevron_right-24px.svg";
 import sortLogo from "../../assets/icons/sort-24px.svg";
 import "./Warehouses.scss";
 import { Link } from "react-router-dom";
+import WarehouseDeleteModal from "../../components/WarehouseDeleteModal/WarehouseDeleteModal"; 
 
 const baseURL = import.meta.env.VITE_API_URL;
 
 export default function Warehouses() {
   const [warehouses, setWarehouses] = useState(null);
+  const [deleteModalOpen, setDeleteModalOpen] = useState(false); 
+  const [selectedWarehouse, setSelectedWarehouse] = useState(null); 
 
   useEffect(() => {
     fetchWarehouses();
@@ -25,8 +28,38 @@ export default function Warehouses() {
     }
   }
 
+  const handleOpenDeleteModal = (warehouse) => {
+    console.log("Selected warehouse for deletion:", warehouse); 
+    setSelectedWarehouse(warehouse);
+    setDeleteModalOpen(true);
+  };
+
+  const handleCloseDeleteModal = () => {
+    console.log("Closing delete modal");
+    setSelectedWarehouse(null);
+    setDeleteModalOpen(false);
+  };
+
+  const handleDelete = async () => {
+    if (!selectedWarehouse) return;
+
+    const warehouseId = selectedWarehouse.id;
+    console.log("Attempting to delete warehouse with ID:", warehouseId);
+
+    try {
+      await axios.delete(`${baseURL}/api/warehouses/${warehouseId}`);
+      setWarehouses((prevWarehouses) =>
+        prevWarehouses.filter((warehouse) => warehouse.id !== warehouseId)
+      );
+      handleCloseDeleteModal();
+      console.log("Deletion successful");
+    } catch (error) {
+      console.error("Error deleting warehouse:", error);
+    }
+  };
+
   if (!warehouses) {
-    return <div>loading...</div>;
+    return <div>Loading...</div>;
   }
 
   return (
@@ -108,12 +141,11 @@ export default function Warehouses() {
                   Actions
                 </div>
                 <div className="warehouse__cell-item warehouse__actions">
-                  <Link
-                    to={`/warehouse/${warehouse.id}/delete`}
-                    className="warehouse__link"
-                  >
-                    <img src={deleteLogo} alt="Delete" />
-                  </Link>
+                  <img
+                    src={deleteLogo}
+                    alt="Delete"
+                    onClick={() => handleOpenDeleteModal(warehouse)} 
+                  />
                   <Link
                     to={`/warehouse/${warehouse.id}/edit`}
                     className="warehouse__link"
@@ -126,74 +158,12 @@ export default function Warehouses() {
           );
         })}
       </div>
+      <WarehouseDeleteModal
+        isOpen={deleteModalOpen}
+        onClose={handleCloseDeleteModal}
+        onDelete={handleDelete}
+        itemName={selectedWarehouse ? selectedWarehouse.warehouse_name : ""}
+      />
     </>
   );
 }
-
-// import { useState } from "react";
-// import axios from "axios";
-// import WarehouseDeleteModal from "../../components/WarehouseDeleteModal/WarehouseDeleteModal";
-
-// const Warehouses = () => {
-//   const [isModalOpen, setIsModalOpen] = useState(false);
-//   const [selectedItem, setSelectedItem] = useState(null);
-//   const [inventoryItems, setInventoryItems] = useState([
-//     { id: 1, name: "Manhattan" },
-//     { id: 2, name: "SF"},
-//   ]);
-
-//   const handleDeleteClick = (item) => {
-//     setSelectedItem(item);
-//     setIsModalOpen(true);
-//   };
-
-//   const handleDeleteConfirm = async () => {
-//     try {
-//       await axios.delete(
-//         `${import.meta.env.VITE_API_URL}/api/warehouses/${selectedItem.id}`
-//       );
-
-//       setInventoryItems((prevItems) =>
-//         prevItems.filter((item) => item.id !== selectedItem.id)
-//       );
-//       setIsModalOpen(false);
-//     } catch (error) {
-//       console.error("Error deleting warehouse:", error);
-//       alert("Unable to delete warehouse. Please try again.");
-//     }
-//   };
-
-//   const handleCloseModal = () => {
-//     setIsModalOpen(false);
-//   };
-
-//   return (
-//     <div className="warehouses">
-//       <h1>Inventory</h1>
-//       <div className="warehouses__list">
-//         {inventoryItems.map((item) => (
-//           <div key={item.id} className="warehouses-item">
-//             <div className="warehouse-item__details">
-//               <h2>{item.name}</h2>
-//             </div>
-//             <button
-//               className="warehouse__delete-button"
-//               onClick={() => handleDeleteClick(item)}
-//             >
-//               Delete
-//             </button>
-//           </div>
-//         ))}
-//       </div>
-
-//       <WarehouseDeleteModal
-//         isOpen={isModalOpen}
-//         onClose={handleCloseModal}
-//         onDelete={handleDeleteConfirm}
-//         itemName={selectedItem ? selectedItem.name : ""}
-//       />
-//     </div>
-//   );
-// };
-
-// export default Warehouses;
