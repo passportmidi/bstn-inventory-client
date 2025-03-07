@@ -73,7 +73,7 @@ export default function WarehouseInventoryList() {
                     to={`/inventory/${inventory.id}`}
                     className="list__item-link"
                   >
-                    <span className="list__item-name">
+                    <span className="list__item-name ">
                       {inventory.item_name}
                     </span>
 
