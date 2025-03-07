@@ -3,17 +3,17 @@
 
 .add-inventory-item {
   max-width: 64rem;
-  margin: auto 1rem;
+  margin: -4rem 1rem 2rem 1rem;
   padding: 1.25rem;
   background-color: $primary-white;
   border-radius: 4px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 
   @include tablet {
-    margin: auto 2rem;
+    margin: -5rem 2rem 7rem 2rem;
   }
   @include desktop {
-    margin: auto auto;
+    margin: -5rem auto 7rem auto;
   }
 
   &__header {
