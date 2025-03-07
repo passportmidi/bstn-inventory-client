@@ -5,7 +5,7 @@ import Warehouses from "./pages/Warehouses/Warehouses";
 import WarehouseDetail from "./pages/WarehouseDetail/WarehouseDetail";
 import AddWarehouse from "./pages/AddWarehouse/AddWarehouse";
 import EditWarehouse from "./pages/EditWarehouse/EditWarehouse";
-import Inventory from "./pages/Inventory/Inventory";
+import Inventories from "./pages/Inventories/Inventories";
 import InventoryDetail from "./pages/InventoryDetail/InventoryDetail";
 import AddInventory from "./pages/AddInventory/AddInventory";
 import EditInventory from "./pages/EditInventory/EditInventory";
@@ -22,7 +22,7 @@ const App = () => {
           <Route path="/warehouse/:id/edit" element={<EditWarehouse />} />
 
           {/* Inventory Routes */}
-          <Route path="/inventories" element={<Inventory />} />
+          <Route path="/inventories" element={<Inventories />} />
           <Route path="/inventory/:id" element={<InventoryDetail />} />
           <Route path="/inventory/add" element={<AddInventory />} />
           <Route path="/inventory/:id/edit" element={<EditInventory />} />

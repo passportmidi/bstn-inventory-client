@@ -5,7 +5,7 @@ import "./AddInventoryForm.scss";
 import arrowBackIcon from "../../assets/icons/arrow_back-24px.svg";
 
 const AddInventoryItem = () => {
-    const navigate = useNavigate(); 
+  const navigate = useNavigate(); 
   const [formData, setFormData] = useState({
     itemName: "",
     description: "",
