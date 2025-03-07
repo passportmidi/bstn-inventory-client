@@ -89,7 +89,9 @@ export default function WarehouseInventoryList() {
                 </div>
 
                 <h4 className="list__subheader--mobile">Category</h4>
-                <span className="list__desc">{inventory.category}</span>
+                <span className="list__desc list__ctgy">
+                  {inventory.category}
+                </span>
               </div>
 
               <div className="list__item-status-qty">
@@ -104,7 +106,9 @@ export default function WarehouseInventoryList() {
                   {inventory.status}
                 </span>{" "}
                 <h4 className="list__subheader--mobile"> Qty</h4>
-                <span className="list__desc">{inventory.quantity}</span>
+                <span className="list__desc list__qty">
+                  {inventory.quantity}
+                </span>
                 {/* </div> */}
               </div>
 

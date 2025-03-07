@@ -148,50 +148,66 @@
     margin-bottom: 1rem;
   }
 
-  &__quantity {
-    // styles for .list__quantity (quantity field)
-  }
-
-  &__item-icons {
-    flex-basis: 100%;
-    display: flex;
-    justify-content: space-between;
-
-    @include tablet {
-      flex-basis: unset;
+  &__ctgy {
+    @include desktop {
       display: flex;
-      align-items: center;
-      gap: 1rem;
+      justify-content: flex-start;
+      align-items: flex-start;
+      width: 5.5rem;
     }
   }
 
-  &__item-edit {
-    cursor: pointer;
+  &__qty {
+    @include desktop {
+      display: flex;
+      justify-content: flex-start;
+      align-items: flex-start;
+      width: 5rem;
+
+      // this doesn't work FIXME:
+    }
+    &__item-icons {
+      flex-basis: 100%;
+      display: flex;
+      justify-content: space-between;
+
+      @include tablet {
+        flex-basis: unset;
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+      }
+    }
+
+    &__item-edit {
+      cursor: pointer;
+    }
+
+    &__item-delete {
+      cursor: pointer;
+      padding-right: 4px;
+    }
+
+    &__item-icon {
+      // styles for .list__item-icon (edit and delete icons)
+    }
   }
 
-  &__item-delete {
-    cursor: pointer;
+  .in-stock {
+    color: #158463;
+    background-color: rgb(21, 132, 99, 0.07);
+
+    @include tablet {
+      margin-bottom: 0rem;
+    }
   }
 
-  &__item-icon {
-    // styles for .list__item-icon (edit and delete icons)
-  }
-}
+  .out-of-stock {
+    color: #c94515;
+    background-color: rgb(201, 69, 21, 0.07);
 
-.in-stock {
-  color: #158463;
-  background-color: rgb(21, 132, 99, 0.07);
-
-  @include tablet {
-    margin-bottom: 0rem;
-  }
-}
-
-.out-of-stock {
-  color: #c94515;
-  background-color: rgb(201, 69, 21, 0.07);
-
-  @include tablet {
-    margin-bottom: 0rem;
+    @include tablet {
+      margin-bottom: 0rem;
+    }
   }
 }

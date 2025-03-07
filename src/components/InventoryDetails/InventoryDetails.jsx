@@ -94,7 +94,7 @@ export default function InventoryDetailsInfo() {
               </div>
               <div className="details__quantity">
                 <h3 className="details__subheader"> Quantity: </h3>
-                <p className="details__desc"> {inventory.quantity} </p>
+                <p className="details__desc "> {inventory.quantity} </p>
               </div>
             </div>
             <div className="details__warehouse">
