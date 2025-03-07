@@ -9,11 +9,14 @@ import Inventories from "./pages/Inventories/Inventories";
 import InventoryDetail from "./pages/InventoryDetail/InventoryDetail";
 import AddInventory from "./pages/AddInventory/AddInventory";
 import EditInventory from "./pages/EditInventory/EditInventory";
+import Header from "./components/Header/Header";
+import Footer from "./components/Footer/Footer";
 
 const App = () => {
   return (
     <BrowserRouter>
       <div className="app">
+        <Header />
         <Routes>
           {/* Warehouses Routes */}
           <Route path="/warehouses" element={<Warehouses />} />
@@ -30,6 +33,7 @@ const App = () => {
           {/* Default Route */}
           <Route path="/" element={<Warehouses />} />
         </Routes>
+        <Footer />
       </div>
     </BrowserRouter>
   );
