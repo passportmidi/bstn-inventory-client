@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import deleteLogo from "../../assets/icons/delete_outline-24px.svg";
 import editLogo from "../../assets/icons/edit-24px.svg";
 import chevronLogo from "../../assets/icons/chevron_right-24px.svg";
+import sortLogo from "../../assets/icons/sort-24px.svg";
 import "./Warehouses.scss";
 
 const baseURL = import.meta.env.VITE_API_URL;
@@ -40,6 +41,11 @@ export default function Warehouses() {
                 <div className="warehouse__cell">
                   <div className="warehouse__cell-label warehouse__cell-label--first">
                     Warehouse
+                    <img
+                      className="warehouse__sort-icon"
+                      src={sortLogo}
+                      alt="Sort"
+                    />
                   </div>
                   <div className="warehouse__cell-item warehouse__name">
                     {warehouse.warehouse_name}
@@ -47,13 +53,27 @@ export default function Warehouses() {
                   </div>
                 </div>
                 <div className="warehouse__cell">
-                  <div className="warehouse__cell-label">Address</div>
+                  <div className="warehouse__cell-label">
+                    Address
+                    <img
+                      className="warehouse__sort-icon"
+                      src={sortLogo}
+                      alt="Sort"
+                    />
+                  </div>
                   <div className="warehouse__cell-item warehouse__address">{`${warehouse.address}, ${warehouse.city}, ${warehouse.country}`}</div>
                 </div>
               </div>
               <div className="warehouse__column">
                 <div className="warehouse__cell">
-                  <div className="warehouse__cell-label">Contact Name</div>
+                  <div className="warehouse__cell-label">
+                    Contact Name
+                    <img
+                      className="warehouse__sort-icon"
+                      src={sortLogo}
+                      alt="Sort"
+                    />
+                  </div>
                   <div className="warehouse__cell-item warehouse__contact">
                     {warehouse.contact_name}
                   </div>
@@ -61,6 +81,11 @@ export default function Warehouses() {
                 <div className="warehouse__cell">
                   <div className="warehouse__cell-label">
                     Contact Information
+                    <img
+                      className="warehouse__sort-icon"
+                      src={sortLogo}
+                      alt="Sort"
+                    />
                   </div>
                   <div className="warehouse__cell-item warehouse__contact-info">
                     <div className="warehouse__phone">

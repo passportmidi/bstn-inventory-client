@@ -26,6 +26,13 @@
   &__header {
     @include page-header;
   }
+  &__sort-icon {
+    display: none;
+    @include tablet {
+      display: block;
+      height: 14px;
+    }
+  }
 
   &__row {
     display: grid;
@@ -99,6 +106,9 @@
       @include tablet {
         background-color: $background-lightgrey;
         padding: 1rem 0;
+        display: flex;
+        align-items: center;
+        gap: 4px;
 
         &--first {
           margin-left: -24px;
