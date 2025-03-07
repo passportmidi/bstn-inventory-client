@@ -2,31 +2,20 @@
 @use "../../styles/partials/typography" as *;
 @use "../../styles/partials/variables" as *;
 
-.foot{
-    display: flex;
-    align-items: flex-end;
-    justify-content: center;
-    padding: 2rem;
+.foot {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
 
-    &__txt{
-        font-family: $font-family;
-        color: $secondary-slate;
-        font-weight: 400;
-        font-size: .6875rem;
-        line-height: 1rem;
+  &__txt {
+    font-family: $font-family;
+    color: $secondary-slate;
+    font-weight: 400;
+    font-size: 0.6875rem;
+    line-height: 1rem;
 
-
-        @include tablet {
-            font-size: 12px;
-            padding-top: 4rem;
-        }
-
-        @include desktop {
-            padding-top: 9rem;
-            padding-bottom: 3rem;
-
-        }
-
+    @include tablet {
+      font-size: 12px;
     }
-
+  }
 }

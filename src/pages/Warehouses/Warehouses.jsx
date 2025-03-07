@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import axios from "axios";
 import { useEffect, useState } from "react";
 import deleteLogo from "../../assets/icons/delete_outline-24px.svg";
@@ -79,4 +80,8 @@ export default function Warehouses() {
       <Footer />
     </>
   );
+=======
+export default function Warehouses() {
+  return <h1>Warehouses</h1>;
+>>>>>>> develop
 }
