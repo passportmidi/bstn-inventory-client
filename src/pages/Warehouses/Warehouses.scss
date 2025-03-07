@@ -41,7 +41,7 @@
     border-top: 1px solid $secondary-cloud;
     @include body-medium;
     @include tablet {
-      padding: 24px;
+      padding: 16px 24px;
       display: grid;
       grid-template-columns: repeat(2, 1fr) auto;
       &:hover {
@@ -53,7 +53,7 @@
         padding-top: 0;
 
         .warehouse__cell-item {
-          padding-bottom: 24px;
+          padding-bottom: 30px;
         }
       }
     }
@@ -121,7 +121,7 @@
 
         &--last {
           margin-right: -24px;
-          padding-right: 33px;
+          padding-right: 24px;
         }
       }
     }
