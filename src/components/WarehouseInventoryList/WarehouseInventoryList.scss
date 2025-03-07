@@ -1,7 +1,7 @@
 @use "../../styles/partials/mixins" as *;
 @use "../../styles/partials/variables" as *;
 
-.list {
+.wh-list {
   &__subheaders {
     display: none;
     @include tablet {
@@ -85,7 +85,7 @@
     }
 
     @include desktop {
-      width: 35%;
+      width: 34.5%;
     }
   }
 
@@ -98,7 +98,7 @@
   }
 
   &__item-name {
-    @include body-medium;
+    @include labels-links-buttons;
     color: $primary-indigo;
     text-decoration: none;
 
@@ -130,6 +130,10 @@
       justify-content: space-between;
       width: 32%;
       align-items: center;
+    }
+
+    @include desktop {
+      width: 29%;
     }
   }
 
@@ -175,7 +179,7 @@
       display: flex;
       justify-content: flex-start;
       align-items: flex-start;
-      width: 5rem;
+      width: 4.3rem;
     }
   }
   &__item-icons {
@@ -202,7 +206,7 @@
   }
 }
 
-.in-stock {
+.wh-in-stock {
   color: #158463;
   background-color: rgb(21, 132, 99, 0.07);
 
@@ -211,7 +215,7 @@
   }
 }
 
-.out-of-stock {
+.wh-out-of-stock {
   color: #c94515;
   background-color: rgb(201, 69, 21, 0.07);
 

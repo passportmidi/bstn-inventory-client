@@ -41,83 +41,86 @@ export default function WarehouseInventoryList() {
 
   return (
     <>
-      <div className="list">
-        <div className="list__subheaders">
-          <div className="list__header-item">
-            <h4 className="list__subheader">Inventory Item</h4>
-            <img className="list__sort" alt="sort-icon" src={sortButton} />
+      <div className="wh-list">
+        <div className="wh-list__subheaders">
+          <div className="wh-list__header-item">
+            <h4 className="wh-list__subheader">Inventory Item</h4>
+            <img className="wh-list__sort" alt="sort-icon" src={sortButton} />
           </div>
-          <div className="list__header-item">
-            <h4 className="list__subheader">Category</h4>
-            <img className="list__sort" alt="sort-icon" src={sortButton} />
+          <div className="wh-list__header-item">
+            <h4 className="wh-list__subheader">Category</h4>
+            <img className="wh-list__sort" alt="sort-icon" src={sortButton} />
           </div>
-          <div className="list__header-item">
-            <h4 className="list__subheader">Status</h4>
-            <img className="list__sort" alt="sort-icon" src={sortButton} />
+          <div className="wh-list__header-item">
+            <h4 className="wh-list__subheader">Status</h4>
+            <img className="wh-list__sort" alt="sort-icon" src={sortButton} />
           </div>
-          <div className="list__header-item">
-            <h4 className="list__subheader">Quantity</h4>
-            <img className="list__sort" alt="sort-icon" src={sortButton} />
+          <div className="wh-list__header-item">
+            <h4 className="wh-list__subheader">Quantity</h4>
+            <img className="wh-list__sort" alt="sort-icon" src={sortButton} />
           </div>
-          <div className="list__header-item">
-            <h4 className="list__subheader">Actions</h4>
+          <div className="wh-list__header-item">
+            <h4 className="wh-list__subheader">Actions</h4>
           </div>
         </div>
         {inventoryList.map((inventory) => {
           return (
-            <div className="list__row" key={inventory.id}>
-              <div className="list__item-info">
-                <h4 className="list__subheader--mobile">Inventory Item</h4>
-                <div className="list__item-grp">
+            <div className="wh-list__row" key={inventory.id}>
+              <div className="wh-list__item-info">
+                <h4 className="wh-list__subheader--mobile">Inventory Item</h4>
+                <div className="wh-list__item-grp">
                   <Link
                     to={`/inventory/${inventory.id}`}
-                    className="list__item-link"
+                    className="wh-list__item-link"
                   >
-                    <span className="list__item-name ">
+                    <span className="wh-list__item-name ">
                       {inventory.item_name}
                     </span>
 
                     <img
-                      className="list__item-icon"
+                      className="wh-list__item-icon"
                       alt="chevron right-icon"
                       src={chevronButton}
                     />
                   </Link>
                 </div>
 
-                <h4 className="list__subheader--mobile">Category</h4>
-                <span className="list__desc list__ctgy">
+                <h4 className="wh-list__subheader--mobile">Category</h4>
+                <span className="wh-list__desc wh-list__ctgy">
                   {inventory.category}
                 </span>
               </div>
 
-              <div className="list__item-status-qty">
-                <h4 className="list__subheader--mobile">Status</h4>
+              <div className="wh-list__item-status-qty">
+                <h4 className="wh-list__subheader--mobile">Status</h4>
                 <span
-                  className={`list__stock ${
+                  className={`wh-list__stock ${
                     inventory.status === "In Stock"
-                      ? "in-stock"
-                      : "out-of-stock"
+                      ? "wh-in-stock"
+                      : "wh-out-of-stock"
                   }`}
                 >
                   {inventory.status}
                 </span>{" "}
-                <h4 className="list__subheader--mobile"> Qty</h4>
-                <span className="list__desc list__qty">
+                <h4 className="wh-list__subheader--mobile"> Qty</h4>
+                <span className="wh-list__desc wh-list__qty">
                   {inventory.quantity}
                 </span>
               </div>
 
-              <div className="list__item-icons">
+              <div className="wh-list__item-icons">
                 <img
                   onClick={() => handleDelete(inventory.id)}
-                  className="list__item-delete list__item-icon"
+                  className="wh-list__item-delete wh-list__item-icon"
                   alt="delete-icon"
                   src={deleteButton}
                 />
-                <Link to={`/inventory/${id}/edit`} className="list__item-edit">
+                <Link
+                  to={`/inventory/${id}/edit`}
+                  className="wh-list__item-edit"
+                >
                   <img
-                    className="list__item-icon"
+                    className="wh-list__item-icon"
                     alt="edit-icon"
                     src={editButton}
                   />
