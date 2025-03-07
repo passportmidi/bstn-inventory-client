@@ -10,12 +10,14 @@
   background-color: $primary-white;
 
   @include tablet {
-    margin: 2rem;
+    margin: auto;
     margin-top: -5rem;
+    max-width: 45rem;
   }
 
   @include desktop {
-    margin: 7rem;
+    margin: auto;
     margin-top: -5rem;
+    max-width: 70rem;
   }
 }

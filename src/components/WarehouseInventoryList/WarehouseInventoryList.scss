@@ -127,13 +127,14 @@
   &__item-status-qty {
     display: flex;
     flex-direction: column;
-    margin-right: 3rem;
+    // margin-right: 3rem;
+    width: 40%;
 
     @include tablet {
       flex-direction: row;
       justify-content: space-between;
       width: 32%;
-      margin-right: unset;
+      // margin-right: unset;
       align-items: center;
     }
   }
@@ -153,20 +154,34 @@
   }
 
   &__ctgy {
+    @include tablet {
+      display: flex;
+      justify-content: flex-start;
+      align-items: flex-start;
+      width: 5rem;
+    }
+
     @include desktop {
       display: flex;
       justify-content: flex-start;
       align-items: flex-start;
-      width: 7.5rem;
+      width: 5rem;
     }
   }
 
   &__qty {
+    @include tablet {
+      display: flex;
+      justify-content: flex-start;
+      align-items: flex-start;
+      width: 4.5rem;
+    }
+
     @include desktop {
       display: flex;
       justify-content: flex-start;
       align-items: flex-start;
-      width: 7rem;
+      width: 5rem;
 
       // this doesn't work FIXME:
     }
