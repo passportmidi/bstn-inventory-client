@@ -55,7 +55,7 @@ export default function WarehouseInventoryList() {
     }
   };
   if (!inventoryList) {
-    return <div>Loading Inventory List...</div>;
+    return <div></div>;
   }
 
   return (

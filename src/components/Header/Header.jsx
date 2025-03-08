@@ -5,6 +5,7 @@ import { NavLink } from "react-router-dom";
 export default function Header() {
   return (
     <>
+    <div className="nav-wrap">
       <nav className="nav">
         <div className="nav__wordmark">
           <img src={logo1} alt="wordmark" />
@@ -13,12 +14,12 @@ export default function Header() {
           <NavLink to="/warehouse" className="nav-link">
             Warehouses
           </NavLink>
-
           <NavLink to="/inventory" className="nav-link">
             Inventory
           </NavLink>
         </div>
       </nav>
+    </div>
       <div className="gap"></div>
     </>
   );
