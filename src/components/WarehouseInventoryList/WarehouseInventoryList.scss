@@ -197,6 +197,8 @@
 
   &__item-edit {
     cursor: pointer;
+    display: flex;
+    align-items: center;
   }
 
   &__item-delete {
