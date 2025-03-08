@@ -1,6 +1,77 @@
 @use "../../styles/partials/mixins" as *;
 @use "../../styles/partials/variables" as *;
 
+.head {
+  padding: 1rem;
+  padding-bottom: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  @include tablet {
+    padding: 1.5rem;
+    flex-direction: row;
+    align-items: center;
+  }
+
+  @include desktop {
+    padding: 2rem;
+  }
+  &__header {
+    padding-bottom: 1rem;
+    &--name {
+      @include page-header;
+    }
+
+    @include tablet {
+      padding-bottom: unset;
+    }
+  }
+
+  &__actions {
+    display: flex;
+    flex-direction: column;
+
+    @include tablet {
+      flex-direction: row;
+      align-items: center;
+      gap: 1rem;
+    }
+  }
+
+  &__search {
+    margin-bottom: 1rem;
+    display: flex;
+    justify-content: space-between;
+    border-radius: 20px;
+    border: 1px solid $secondary-cloud;
+    height: 38px;
+    padding: 0rem 1rem;
+    background-color: $primary-white;
+    align-items: center;
+
+    @include tablet {
+      margin: unset;
+      width: 20vw;
+    }
+
+    &--desc {
+      @include body-medium;
+      color: $secondary-slate;
+    }
+
+    &--icon {
+    }
+  }
+
+  &__add-link {
+  }
+
+  &__add {
+    text-decoration: none;
+    @include primary-button;
+  }
+}
+
 .warehouse {
   margin-top: -1rem; //to be tested once nav is put in
   margin: 2rem; //FOR TESTING
