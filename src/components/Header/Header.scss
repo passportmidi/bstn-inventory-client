@@ -7,7 +7,6 @@
 
   padding: 1rem;
   flex-direction: column;
-  // justify-content: center;
   align-items: center;
   gap: 1rem;
 
@@ -37,12 +36,6 @@
     &:hover {
       text-decoration: underline;
     }
-  }
-
-  &__wordmark {
-    // width: 100%;
-    // display: flex;
-    // justify-content: center;
   }
 
   &__links {
@@ -85,7 +78,6 @@
 .gap {
   background-color: $background-graphite;
   height: 4rem;
-  //   border-top: 1px solid white;
   @include tablet {
     height: 5rem;
   }

@@ -4,13 +4,11 @@
 .warehouse-list {
   @include tablet {
     margin: auto;
-    // margin-top: -5rem;
     max-width: 45rem;
   }
 
   @include desktop {
     margin: auto;
-    // margin-top: -5rem;
     max-width: 70rem;
   }
 }
