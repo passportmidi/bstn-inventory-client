@@ -58,12 +58,6 @@
       @include body-medium;
       color: $secondary-slate;
     }
-
-    &--icon {
-    }
-  }
-
-  &__add-link {
   }
 
   &__add {
@@ -113,7 +107,6 @@
     @include body-medium;
     @include tablet {
       padding: 0px;
-      // padding: 16px 24px;
       display: grid;
       grid-template-columns: repeat(2, 1fr) auto;
       &:hover {
@@ -171,12 +164,10 @@
         gap: 4px;
 
         &--first {
-          // margin-left: -24px;
           padding-left: 24px;
         }
 
         &--last {
-          // margin-right: -24px;
           padding-right: 24px;
         }
       }

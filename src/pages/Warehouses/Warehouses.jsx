@@ -7,14 +7,14 @@ import sortLogo from "../../assets/icons/sort-24px.svg";
 import "./Warehouses.scss";
 import { Link } from "react-router-dom";
 import searchButton from "../../assets/icons/search-24px.svg";
-import WarehouseDeleteModal from "../../components/WarehouseDeleteModal/WarehouseDeleteModal"; 
+import WarehouseDeleteModal from "../../components/WarehouseDeleteModal/WarehouseDeleteModal";
 
 const baseURL = import.meta.env.VITE_API_URL;
 
 export default function Warehouses() {
   const [warehouses, setWarehouses] = useState(null);
-  const [deleteModalOpen, setDeleteModalOpen] = useState(false); 
-  const [selectedWarehouse, setSelectedWarehouse] = useState(null); 
+  const [deleteModalOpen, setDeleteModalOpen] = useState(false);
+  const [selectedWarehouse, setSelectedWarehouse] = useState(null);
 
   useEffect(() => {
     fetchWarehouses();
@@ -30,7 +30,7 @@ export default function Warehouses() {
   }
 
   const handleOpenDeleteModal = (warehouse) => {
-    console.log("Selected warehouse for deletion:", warehouse); 
+    console.log("Selected warehouse for deletion:", warehouse);
     setSelectedWarehouse(warehouse);
     setDeleteModalOpen(true);
   };
@@ -89,7 +89,7 @@ export default function Warehouses() {
             <div className="warehouse__row" key={warehouse.id}>
               <div className="warehouse__column">
                 <div className="warehouse__cell">
-                  <div clão—it's kind of like the "dubstep" of funk, but that's just a metaphor to explain it, because funk has different subgenres, just like electronic music, which includes house, techno, etc.lassName="warehouse__cell-label warehouse__cell-label--first">
+                  <div className="warehouse__cell-label warehouse__cell-label--first">
                     Warehouse
                     <img
                       className="warehouse__sort-icon"
@@ -160,7 +160,7 @@ export default function Warehouses() {
                   <img
                     src={deleteLogo}
                     alt="Delete"
-                    onClick={() => handleOpenDeleteModal(warehouse)} 
+                    onClick={() => handleOpenDeleteModal(warehouse)}
                   />
                   <Link
                     to={`/warehouse/${warehouse.id}/edit`}
