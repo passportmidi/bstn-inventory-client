@@ -6,14 +6,15 @@ import chevronLogo from "../../assets/icons/chevron_right-24px.svg";
 import sortLogo from "../../assets/icons/sort-24px.svg";
 import "./Warehouses.scss";
 import { Link } from "react-router-dom";
-import WarehouseDeleteModal from "../../components/WarehouseDeleteModal/WarehouseDeleteModal"; 
+import searchButton from "../../assets/icons/search-24px.svg";
+import WarehouseDeleteModal from "../../components/WarehouseDeleteModal/WarehouseDeleteModal";
 
 const baseURL = import.meta.env.VITE_API_URL;
 
 export default function Warehouses() {
   const [warehouses, setWarehouses] = useState(null);
-  const [deleteModalOpen, setDeleteModalOpen] = useState(false); 
-  const [selectedWarehouse, setSelectedWarehouse] = useState(null); 
+  const [deleteModalOpen, setDeleteModalOpen] = useState(false);
+  const [selectedWarehouse, setSelectedWarehouse] = useState(null);
 
   useEffect(() => {
     fetchWarehouses();
@@ -29,7 +30,7 @@ export default function Warehouses() {
   }
 
   const handleOpenDeleteModal = (warehouse) => {
-    console.log("Selected warehouse for deletion:", warehouse); 
+    console.log("Selected warehouse for deletion:", warehouse);
     setSelectedWarehouse(warehouse);
     setDeleteModalOpen(true);
   };
@@ -65,8 +66,23 @@ export default function Warehouses() {
   return (
     <>
       <div className="warehouse">
-        <div className="warehouse__head">
-          <h1 className="warehouse__header">Warehouses</h1>
+        <div className="head">
+          <div className="head__header">
+            <h1 className="head__header--name">Warehouses</h1>
+          </div>
+          <div className="head__actions">
+            <button className="head__search">
+              <span className="head__search--desc"> Search... </span>
+              <img
+                className="head__search--icon"
+                src={searchButton}
+                alt="search-icon"
+              />
+            </button>
+            <Link to={`/warehouse/add`} className="head__add-link">
+              <div className="head__add"> + Add New Warehouse </div>
+            </Link>
+          </div>
         </div>
         {warehouses.map((warehouse) => {
           return (
@@ -144,7 +160,7 @@ export default function Warehouses() {
                   <img
                     src={deleteLogo}
                     alt="Delete"
-                    onClick={() => handleOpenDeleteModal(warehouse)} 
+                    onClick={() => handleOpenDeleteModal(warehouse)}
                   />
                   <Link
                     to={`/warehouse/${warehouse.id}/edit`}
