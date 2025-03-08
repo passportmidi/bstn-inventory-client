@@ -41,7 +41,8 @@
     border-top: 1px solid $secondary-cloud;
     @include body-medium;
     @include tablet {
-      padding: 16px 24px;
+      padding: 0px;
+      // padding: 16px 24px;
       display: grid;
       grid-template-columns: repeat(2, 1fr) auto;
       &:hover {
@@ -53,7 +54,8 @@
         padding-top: 0;
 
         .warehouse__cell-item {
-          padding-bottom: 30px;
+          padding-bottom: 8px;
+          height: 50%;
         }
       }
     }
@@ -69,26 +71,6 @@
       display: none;
     }
   }
-  &__name {
-    font-weight: 600;
-    color: $primary-indigo;
-    gap: 4px;
-    &:hover {
-      text-decoration: underline;
-    }
-  }
-  &__contact-info {
-    flex-direction: column;
-    align-items: start !important;
-    justify-content: center;
-  }
-  &__phone,
-  &__email {
-    @include tablet {
-      display: flex;
-      justify-content: start;
-    }
-  }
   &__link {
     text-decoration: none;
   }
@@ -98,6 +80,9 @@
       padding: 0;
     }
     &-item {
+      @include tablet {
+        padding: 16px 4px;
+      }
       height: 100%;
       display: flex;
       align-items: center;
@@ -108,19 +93,19 @@
       color: $secondary-slate;
       padding-bottom: 4px;
       @include tablet {
+        padding: 16px 4px;
         background-color: $background-lightgrey;
-        padding: 1rem 0;
         display: flex;
         align-items: center;
         gap: 4px;
 
         &--first {
-          margin-left: -24px;
+          // margin-left: -24px;
           padding-left: 24px;
         }
 
         &--last {
-          margin-right: -24px;
+          // margin-right: -24px;
           padding-right: 24px;
         }
       }
@@ -139,11 +124,35 @@
       }
     }
   }
+  &__name {
+    font-weight: 600;
+    color: $primary-indigo;
+    gap: 4px;
+    @include tablet {
+      padding-left: 24px;
+    }
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+  &__contact-info {
+    flex-direction: column;
+    align-items: start;
+    justify-content: center;
+  }
+  &__phone,
+  &__email {
+    @include tablet {
+      display: flex;
+      justify-content: start;
+    }
+  }
   &__actions {
     display: flex;
     width: stretch;
     justify-content: space-between;
     @include tablet {
+      padding-right: 24px;
       gap: 12px;
     }
   }
