@@ -84,16 +84,39 @@ const EditWarehouse = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (validateForm()) {
-      try {
-        await axios.put(
-          `${import.meta.env.VITE_API_URL}/api/warehouses/${id}`,
-          formData
-        );
-        console.log("Warehouse updated successfully!");
-        setUpdated(true);
-      } catch (error) {
-        console.error("Error updating warehouse:", error);
+
+    if (!validateForm()) {
+      return;
+    }
+
+    try {
+      const requestBody = {
+        warehouse_name: formData.warehouseName,
+        address: formData.streetAddress,
+        city: formData.city,
+        country: formData.country,
+        contact_name: formData.contactName,
+        contact_position: formData.position,
+        contact_phone: formData.phoneNumber,
+        contact_email: formData.email,
+      };
+
+      console.log("Request body:", requestBody); 
+
+      const response = await axios.put(
+        `${import.meta.env.VITE_API_URL}/api/warehouses/${id}`,
+        requestBody
+      );
+
+      console.log("Warehouse updated successfully:", response.data);
+      setUpdated(true);
+    } catch (error) {
+      console.error("Error updating warehouse:", error);
+      if (error.response) {
+        console.error("Error response:", error.response.data); 
+        alert(`Error: ${error.response.data.message}`); 
+      } else {
+        alert("Unable to update warehouse. Please try again.");
       }
     }
   };
