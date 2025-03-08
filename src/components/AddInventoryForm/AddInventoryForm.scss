@@ -14,6 +14,7 @@
   }
   @include desktop {
     margin: -5rem auto 7rem auto;
+    min-width: 64rem !important;
   }
 
   &__header {
@@ -92,8 +93,8 @@
     }
 
     &--description {
-      height: 6rem; 
-      padding-bottom: 3.5rem; 
+      height: 6rem;
+      padding-bottom: 3.5rem;
     }
   }
 
@@ -109,7 +110,7 @@
     margin: 1.25rem -1.25rem;
 
     @include tablet {
-      display: none; 
+      display: none;
     }
   }
 
@@ -168,6 +169,6 @@
     background-repeat: no-repeat;
     background-position: right 0.75rem center;
     background-size: 1rem;
-    padding-right: 2rem; 
+    padding-right: 2rem;
   }
 }
