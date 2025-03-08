@@ -13,3 +13,11 @@ body {
   font-weight: 400;
   font-size: 16px;
 }
+
+// changes the style of div.app
+.app {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  min-height: 100vh;
+}

@@ -4,10 +4,14 @@
 
 .foot {
   display: flex;
-  align-items: flex-end;
+  flex-direction: row;
   justify-content: center;
 
+  flex-grow: 1;
+  align-items: flex-end;
+
   &__txt {
+    margin: 2rem 0;
     font-family: $font-family;
     color: $secondary-slate;
     font-weight: 400;
@@ -16,6 +20,10 @@
 
     @include tablet {
       font-size: 12px;
+    }
+
+    @include desktop {
+      margin: 3rem 0;
     }
   }
 }
