@@ -12,12 +12,12 @@
   @include tablet {
     margin: auto;
     margin-top: -5rem;
-    max-width: 45rem;
+    min-width: 45rem;
   }
 
   @include desktop {
     margin: auto;
     margin-top: -5rem;
-    max-width: 70rem;
+    min-width: 70rem;
   }
 }

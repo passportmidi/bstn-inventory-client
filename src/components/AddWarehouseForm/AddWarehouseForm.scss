@@ -7,19 +7,19 @@
   padding: 1.25rem;
   background-color: $primary-white;
   border-radius: 4px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 
   @include tablet {
     margin: -5rem 2rem 7rem 2rem;
   }
   @include desktop {
     margin: -5rem auto 7rem auto;
+    min-width: 64rem !important;
   }
   &__header {
     display: flex;
     align-items: center;
     margin-bottom: 1.25rem;
-
   }
 
   &__back-link {
@@ -100,10 +100,10 @@
   &__divider-horizontal {
     height: 1px;
     background-color: $secondary-cloud;
-    margin: 1.25rem -1.25rem; 
+    margin: 1.25rem -1.25rem;
 
     @include tablet {
-      display: none; 
+      display: none;
     }
   }
 
@@ -122,7 +122,7 @@
     justify-content: center;
     gap: 0.625rem;
     padding: 1.25rem;
-    margin: 1.25rem -1.25rem -1.25rem -1.25rem; 
+    margin: 1.25rem -1.25rem -1.25rem -1.25rem;
     background-color: $background-lightgrey;
 
     @include tablet {
