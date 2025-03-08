@@ -5,39 +5,58 @@ import deleteButton from "../../assets/icons/delete_outline-24px.svg";
 import editButton from "../../assets/icons/edit-24px.svg";
 import sortButton from "../../assets/icons/sort-24px.svg";
 import chevronButton from "../../assets/icons/chevron_right-24px.svg";
-
 import "./WarehouseInventoryList.scss";
 import { Link, useParams } from "react-router-dom";
-
+import InventoryDeleteModal from "../../components/InventoryDeleteModal/InventoryDeleteModal";
 export default function WarehouseInventoryList() {
   const { id } = useParams();
   const [inventoryList, setInventoryList] = useState(null);
-
+  const [deleteModalOpen, setDeleteModalOpen] = useState(false);
+  const [selectedItem, setSelectedItem] = useState(null);
   useEffect(() => {
+    console.log("Warehouse ID from URL:", id);
     fetchInventoryList();
   }, [id]);
-
   async function fetchInventoryList() {
     try {
+      console.log("Fetching inventory list for warehouse ID:", id);
       const { data } = await axios.get(
         `${baseURL}/api/warehouses/${id}/inventories`
       );
+      console.log("Fetched inventory list:", data);
       setInventoryList(data);
     } catch (e) {
       console.log("Error fetching inventory list:", e);
     }
   }
+  const handleOpenDeleteModal = (item) => {
+    console.log("Selected item for deletion:", item);
+    setSelectedItem(item);
+    setDeleteModalOpen(true);
+  };
+  const handleCloseDeleteModal = () => {
+    console.log("Closing delete modal");
+    setSelectedItem(null);
+    setDeleteModalOpen(false);
+  };
+  const handleDelete = async () => {
+    if (!selectedItem) return;
+    const inventoryId = selectedItem.id;
+    console.log("Attempting to delete inventory with ID:", inventoryId);
+    try {
+      await axios.delete(`${baseURL}/api/inventories/${inventoryId}`);
+      setInventoryList((prevList) =>
+        prevList.filter((item) => item.id !== inventoryId)
+      );
+      handleCloseDeleteModal();
+      console.log("Deletion successful");
+    } catch (error) {
+      console.error("Error deleting inventory item:", error);
+    }
+  };
   if (!inventoryList) {
     return <div>Loading Inventory List...</div>;
   }
-  const handleDelete = async (inventoryId) => {
-    try {
-      await axios.delete(`${baseURL}/api/inventories/${inventoryId}`);
-      fetchInventoryList();
-    } catch (e) {
-      console.log("Error deleting inventory item:", e);
-    }
-  };
 
   return (
     <>
@@ -110,13 +129,13 @@ export default function WarehouseInventoryList() {
 
               <div className="wh-list__item-icons">
                 <img
-                  onClick={() => handleDelete(inventory.id)}
                   className="wh-list__item-delete wh-list__item-icon"
                   alt="delete-icon"
                   src={deleteButton}
+                  onClick={() => handleOpenDeleteModal(inventory)}
                 />
                 <Link
-                  to={`/inventory/${id}/edit`}
+                  to={`/inventory/${inventory.id}/edit`}
                   className="wh-list__item-edit"
                 >
                   <img
@@ -130,6 +149,12 @@ export default function WarehouseInventoryList() {
           );
         })}
       </div>
+      <InventoryDeleteModal
+        isOpen={deleteModalOpen}
+        onClose={handleCloseDeleteModal}
+        onDelete={handleDelete}
+        itemName={selectedItem ? selectedItem.item_name : ""}
+      />
     </>
   );
 }
