@@ -103,7 +103,9 @@ export default function Warehouses() {
                   >
                     <div className="warehouse__cell-item warehouse__name">
                       {warehouse.warehouse_name}
-                      <img src={chevronLogo} alt="Arrow" />
+                      <span className="warehouse__chevron">
+                       <img src={chevronLogo} alt="Arrow" />
+                      </span>
                     </div>
                   </Link>
                 </div>
