@@ -17,24 +17,22 @@ const App = () => {
     <BrowserRouter>
       <div className="app">
         <Header />
-        <main>
-          <Routes>
-            {/* Warehouses Routes */}
-            <Route path="/warehouse" element={<Warehouses />} />
-            <Route path="/warehouse/:id" element={<WarehouseDetail />} />
-            <Route path="/warehouse/add" element={<AddWarehouse />} />
-            <Route path="/warehouse/:id/edit" element={<EditWarehouse />} />
+        <Routes>
+          {/* Warehouses Routes */}
+          <Route path="/warehouse" element={<Warehouses />} />
+          <Route path="/warehouse/:id" element={<WarehouseDetail />} />
+          <Route path="/warehouse/add" element={<AddWarehouse />} />
+          <Route path="/warehouse/:id/edit" element={<EditWarehouse />} />
 
-            {/* Inventory Routes */}
-            <Route path="/inventory" element={<Inventories />} />
-            <Route path="/inventory/:id" element={<InventoryDetail />} />
-            <Route path="/inventory/add" element={<AddInventory />} />
-            <Route path="/inventory/:id/edit" element={<EditInventory />} />
+          {/* Inventory Routes */}
+          <Route path="/inventory" element={<Inventories />} />
+          <Route path="/inventory/:id" element={<InventoryDetail />} />
+          <Route path="/inventory/add" element={<AddInventory />} />
+          <Route path="/inventory/:id/edit" element={<EditInventory />} />
 
-            {/* Default Route */}
-            <Route path="/" element={<Navigate to="/warehouse" />} />
-          </Routes>
-        </main>
+          {/* Default Route */}
+          <Route path="/" element={<Navigate to="/warehouse" />} />
+        </Routes>
         <Footer />
       </div>
     </BrowserRouter>
