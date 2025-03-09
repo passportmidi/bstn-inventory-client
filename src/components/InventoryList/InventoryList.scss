@@ -185,6 +185,10 @@
     flex-direction: row;
     align-items: center;
     gap: .25rem;
+
+    &:hover .list__item-icon {
+      transform: translateX(4px);
+    }
   }
 
   &__desc {
