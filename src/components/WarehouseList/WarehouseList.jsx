@@ -30,13 +30,13 @@ export default function Warehouses() {
   }
 
   const handleOpenDeleteModal = (warehouse) => {
-    console.log("Selected warehouse for deletion:", warehouse);
+    "Selected warehouse for deletion:", warehouse;
     setSelectedWarehouse(warehouse);
     setDeleteModalOpen(true);
   };
 
   const handleCloseDeleteModal = () => {
-    console.log("Closing delete modal");
+    ("Closing delete modal");
     setSelectedWarehouse(null);
     setDeleteModalOpen(false);
   };
@@ -45,7 +45,7 @@ export default function Warehouses() {
     if (!selectedWarehouse) return;
 
     const warehouseId = selectedWarehouse.id;
-    console.log("Attempting to delete warehouse with ID:", warehouseId);
+    "Attempting to delete warehouse with ID:", warehouseId;
 
     try {
       await axios.delete(`${baseURL}/api/warehouses/${warehouseId}`);
@@ -53,7 +53,7 @@ export default function Warehouses() {
         prevWarehouses.filter((warehouse) => warehouse.id !== warehouseId)
       );
       handleCloseDeleteModal();
-      console.log("Deletion successful");
+      ("Deletion successful");
     } catch (error) {
       console.error("Error deleting warehouse:", error);
     }
@@ -158,7 +158,7 @@ export default function Warehouses() {
                 </div>
                 <div className="warehouse__cell-item warehouse__actions">
                   <img
-                    className="warehouse__delete-icon" 
+                    className="warehouse__delete-icon"
                     src={deleteLogo}
                     alt="Delete"
                     onClick={() => handleOpenDeleteModal(warehouse)}

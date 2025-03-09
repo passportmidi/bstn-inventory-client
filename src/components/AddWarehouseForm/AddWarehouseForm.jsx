@@ -5,7 +5,7 @@ import "./AddWarehouseForm.scss";
 import arrowBackIcon from "../../assets/icons/arrow_back-24px.svg";
 
 const AddWarehouse = () => {
-  const navigate = useNavigate(); 
+  const navigate = useNavigate();
 
   const [formData, setFormData] = useState({
     warehouseName: "",
@@ -80,7 +80,7 @@ const AddWarehouse = () => {
         requestBody
       );
 
-      console.log("Warehouse created successfully:", response.data);
+      "Warehouse created successfully:", response.data;
 
       navigate("/warehouse");
     } catch (error) {

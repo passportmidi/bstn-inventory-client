@@ -21,31 +21,31 @@ export default function InventoryList() {
   async function fetchInventoryList() {
     try {
       const { data } = await axios.get(`${baseURL}/api/inventories`);
-      console.log("Fetched inventories:", data);
+      "Fetched inventories:", data;
       setInventoryList(data);
     } catch (e) {
       console.log("Error fetching inventories:", e);
     }
   }
   const handleOpenDeleteModal = (item) => {
-    console.log("Selected item for deletion:", item);
+    "Selected item for deletion:", item;
     setSelectedItem(item);
     setDeleteModalOpen(true);
   };
   const handleCloseDeleteModal = () => {
-    console.log("Closing delete modal");
+    ("Closing delete modal");
     setSelectedItem(null);
     setDeleteModalOpen(false);
   };
   const handleDelete = async () => {
     if (!selectedItem) return;
     const inventoryId = selectedItem.id;
-    console.log("Attempting to delete inventory with ID:", inventoryId);
+    "Attempting to delete inventory with ID:", inventoryId;
     try {
       await axios.delete(`${baseURL}/api/inventories/${inventoryId}`);
       setInventoryList(inventoryList.filter((item) => item.id !== inventoryId));
       handleCloseDeleteModal();
-      console.log("Deletion successful");
+      ("Deletion successful");
     } catch (error) {
       console.error("Error deleting inventory item:", error);
     }

@@ -40,7 +40,9 @@ const AddInventoryItem = () => {
         const { data } = await axios.get(
           `${import.meta.env.VITE_API_URL}/api/inventories`
         );
-        const uniqueCategories = [...new Set(data.map((item) => item.category))];
+        const uniqueCategories = [
+          ...new Set(data.map((item) => item.category)),
+        ];
         setCategories(uniqueCategories);
       } catch (error) {
         console.error("Error fetching inventories:", error);
@@ -54,7 +56,8 @@ const AddInventoryItem = () => {
     const newErrors = {};
 
     if (!formData.itemName) newErrors.itemName = "Item Name is required";
-    if (!formData.description) newErrors.description = "Description is required";
+    if (!formData.description)
+      newErrors.description = "Description is required";
     if (!formData.category) newErrors.category = "Category is required";
     if (!formData.status) newErrors.status = "Status is required";
     if (formData.status === "In Stock" && !formData.quantity) {
@@ -76,7 +79,9 @@ const AddInventoryItem = () => {
 
     try {
       const requestBody = {
-        warehouse_id: warehouses.find((wh) => wh.warehouse_name === formData.warehouse)?.id,
+        warehouse_id: warehouses.find(
+          (wh) => wh.warehouse_name === formData.warehouse
+        )?.id,
         item_name: formData.itemName,
         description: formData.description,
         category: formData.category,
@@ -89,7 +94,7 @@ const AddInventoryItem = () => {
         requestBody
       );
 
-      console.log("Inventory item created:", response.data);
+      "Inventory item created:", response.data;
 
       navigate("/inventory");
     } catch (error) {
@@ -184,13 +189,19 @@ const AddInventoryItem = () => {
           <div className="add-inventory-item__divider-horizontal"></div>
           <div className="add-inventory-item__divider-vertical"></div>
           <div className="add-inventory-item__section">
-            <h2 className="add-inventory-item__section-title">Item Availability</h2>
+            <h2 className="add-inventory-item__section-title">
+              Item Availability
+            </h2>
             <div className="add-inventory-item__form-group">
               <label className="add-inventory-item__label">Status</label>
               <div className="add-inventory-item__radio-group">
-                <label className={`add-inventory-item__radio-label ${
-                  formData.status === "Out of Stock" ? "add-inventory-item__radio-label--disabled" : ""
-                }`}>
+                <label
+                  className={`add-inventory-item__radio-label ${
+                    formData.status === "Out of Stock"
+                      ? "add-inventory-item__radio-label--disabled"
+                      : ""
+                  }`}
+                >
                   <input
                     type="radio"
                     name="status"
@@ -200,9 +211,13 @@ const AddInventoryItem = () => {
                   />
                   In stock
                 </label>
-                <label className={`add-inventory-item__radio-label ${
-                  formData.status === "In Stock" ? "add-inventory-item__radio-label--disabled" : ""
-                }`}>
+                <label
+                  className={`add-inventory-item__radio-label ${
+                    formData.status === "In Stock"
+                      ? "add-inventory-item__radio-label--disabled"
+                      : ""
+                  }`}
+                >
                   <input
                     type="radio"
                     name="status"

@@ -24,11 +24,9 @@ const EditWarehouse = () => {
   useEffect(() => {
     const fetchWarehouse = async () => {
       try {
-        console.log("Fetching warehouse with id:", id);
         const { data } = await axios.get(
           `${import.meta.env.VITE_API_URL}/api/warehouses/${id}`
         );
-        console.log("Fetched data:", data);
         setFormData({
           warehouseName: data.warehouse_name,
           streetAddress: data.address,
@@ -101,20 +99,20 @@ const EditWarehouse = () => {
         contact_email: formData.email,
       };
 
-      console.log("Request body:", requestBody); 
+      "Request body:", requestBody;
 
       const response = await axios.put(
         `${import.meta.env.VITE_API_URL}/api/warehouses/${id}`,
         requestBody
       );
 
-      console.log("Warehouse updated successfully:", response.data);
+      "Warehouse updated successfully:", response.data;
       setUpdated(true);
     } catch (error) {
       console.error("Error updating warehouse:", error);
       if (error.response) {
-        console.error("Error response:", error.response.data); 
-        alert(`Error: ${error.response.data.message}`); 
+        console.error("Error response:", error.response.data);
+        alert(`Error: ${error.response.data.message}`);
       } else {
         alert("Unable to update warehouse. Please try again.");
       }
