@@ -158,6 +158,7 @@ export default function Warehouses() {
                 </div>
                 <div className="warehouse__cell-item warehouse__actions">
                   <img
+                    className="warehouse__delete-icon" 
                     src={deleteLogo}
                     alt="Delete"
                     onClick={() => handleOpenDeleteModal(warehouse)}

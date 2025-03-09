@@ -142,5 +142,6 @@
   &__submit-button {
     @include primary-button();
     border: $primary-indigo;
+    cursor: pointer;
   }
 }

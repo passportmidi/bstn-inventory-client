@@ -5,7 +5,7 @@ import "../AddInventoryForm/AddInventoryForm.scss";
 import arrowBackIcon from "../../assets/icons/arrow_back-24px.svg";
 
 const EditInventoryItem = () => {
-  const { id } = useParams();  
+  const { id } = useParams();
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
     itemName: "",
@@ -13,13 +13,12 @@ const EditInventoryItem = () => {
     category: "",
     status: "In Stock",
     quantity: "0",
-    warehouse: "", 
+    warehouse: "",
   });
 
   const [errors, setErrors] = useState({});
   const [warehouses, setWarehouses] = useState([]);
   const [categories, setCategories] = useState([]);
-
 
   useEffect(() => {
     const fetchInventory = async () => {
@@ -36,8 +35,8 @@ const EditInventoryItem = () => {
             description: inventoryItem.description,
             category: inventoryItem.category,
             status: inventoryItem.status,
-            quantity: inventoryItem.quantity.toString(), 
-            warehouse: inventoryItem.warehouse_name, 
+            quantity: inventoryItem.quantity.toString(),
+            warehouse: inventoryItem.warehouse_name,
           });
         } else {
           console.error("Inventory item not found");
@@ -101,7 +100,7 @@ const EditInventoryItem = () => {
     e.preventDefault();
 
     if (!validateForm()) {
-      return; 
+      return;
     }
 
     try {
@@ -111,7 +110,7 @@ const EditInventoryItem = () => {
         description: formData.description,
         category: formData.category,
         status: formData.status,
-        quantity: parseInt(formData.quantity, 10), 
+        quantity: parseInt(formData.quantity, 10),
       };
 
       await axios.put(
@@ -217,7 +216,9 @@ const EditInventoryItem = () => {
             <div className="add-inventory-item__form-group">
               <label className="add-inventory-item__label">Status</label>
               <div className="add-inventory-item__radio-group">
-                <label className="add-inventory-item__radio-label">
+                <label className={`add-inventory-item__radio-label ${
+                  formData.status === "Out of Stock" ? "add-inventory-item__radio-label--disabled" : ""
+                }`}>
                   <input
                     type="radio"
                     name="status"
@@ -227,7 +228,9 @@ const EditInventoryItem = () => {
                   />
                   In stock
                 </label>
-                <label className="add-inventory-item__radio-label">
+                <label className={`add-inventory-item__radio-label ${
+                  formData.status === "In Stock" ? "add-inventory-item__radio-label--disabled" : ""
+                }`}>
                   <input
                     type="radio"
                     name="status"

@@ -138,6 +138,10 @@
   &__link {
     text-decoration: none;
   }
+
+  &__delete-icon {
+    cursor: pointer; 
+  }
   &__cell {
     padding: 8px 0;
     @include tablet {
