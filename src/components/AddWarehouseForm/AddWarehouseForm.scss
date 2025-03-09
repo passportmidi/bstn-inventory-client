@@ -51,7 +51,6 @@
   &__form-sections {
     display: flex;
     flex-direction: column;
-    gap: 1.25rem;
 
     @include tablet {
       flex-direction: row;
@@ -84,7 +83,7 @@
     width: 100%;
     padding: 0.5rem;
     border: 1px solid $secondary-cloud;
-    border-radius: 18px;
+    border-radius: 1.125rem;
     @include body-medium();
     color: $primary-black;
 

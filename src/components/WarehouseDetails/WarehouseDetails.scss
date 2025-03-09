@@ -12,11 +12,11 @@
     border-bottom: solid 1px $secondary-cloud;
 
     @include tablet {
-      padding: 1.5rem;
+      padding: 1.3rem 1.5rem;
     }
 
     @include desktop {
-      padding: 2rem;
+      padding: 1.3rem 2rem;
     }
   }
 
@@ -48,7 +48,7 @@
     justify-content: center;
     background-color: $primary-indigo;
     border-radius: 50%;
-    padding: 6px;
+    padding: .375rem;
     align-items: center;
     align-self: center;
     cursor: pointer;
@@ -74,7 +74,7 @@
 
     @include tablet {
       @include primary-button();
-      gap: 10px;
+      gap: .625rem;
       cursor: pointer;
       display: flex;
       align-items: center;
@@ -99,7 +99,7 @@
   }
 
   &__address {
-    padding-bottom: 1rem;
+    padding-bottom: 2rem;
 
     @include tablet {
       padding-bottom: 0rem;
@@ -129,7 +129,7 @@
   &__contact {
     display: flex;
     flex-direction: row;
-    gap: 3rem;
+    gap: 6rem;
 
     @include tablet {
       border-left: $secondary-cloud solid 1px;

@@ -79,9 +79,8 @@
       align-items: center;
       justify-content: space-between;
 
-      // when links are in-active
       .nav-link {
-        line-height: 20px;
+        line-height: 1.25rem;
         color: $secondary-cloud;
         padding: 0.5rem 2.5rem;
         border-radius: 9999px;
@@ -91,7 +90,6 @@
         }
       }
 
-      // when links are active
       .active {
         color: $primary-white;
         background-color: $primary-black;
