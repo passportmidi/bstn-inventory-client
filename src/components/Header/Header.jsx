@@ -5,6 +5,7 @@ import { NavLink } from "react-router-dom";
 export default function Header() {
   return (
     <>
+    <div className="nav-block">
     <div className="nav-wrap">
       <nav className="nav">
         <div className="nav__wordmark">
@@ -21,6 +22,8 @@ export default function Header() {
       </nav>
     </div>
       <div className="gap"></div>
+
+    </div>
     </>
   );
 }

@@ -2,6 +2,12 @@
 @use "../../styles/partials/typography" as *;
 @use "../../styles/partials/variables" as *;
 
+
+.nav-block {
+  background-color: $background-graphite;
+
+}
+
 .nav-wrap {
   padding: 1rem;
 

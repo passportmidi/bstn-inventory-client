@@ -20,10 +20,14 @@
 
     @include tablet {
       font-size: 0.75rem;
+      margin: 4rem 0 2rem;
+
     }
 
     @include desktop {
       margin: 3rem 0;
+      margin: 5rem 0 2.5rem;
+
     }
   }
 }
