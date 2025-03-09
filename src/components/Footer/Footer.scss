@@ -1,6 +1,6 @@
 @use "../../styles/partials/mixins" as *;
-@use "../../styles/partials/typography" as *;
 @use "../../styles/partials/variables" as *;
+@use "../../styles/partials/typography" as *;
 
 .foot {
   display: flex;
@@ -16,10 +16,10 @@
     color: $secondary-slate;
     font-weight: 400;
     font-size: 0.6875rem;
-    line-height: 1rem;
+    font-weight: 400;
 
     @include tablet {
-      font-size: 12px;
+      font-size: 0.75rem;
     }
 
     @include desktop {

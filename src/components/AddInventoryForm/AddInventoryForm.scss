@@ -2,19 +2,21 @@
 @use "../../styles/partials/mixins" as *;
 
 .add-inventory-item {
-  max-width: 64rem;
-  margin: -4rem 1rem 2rem 1rem;
+  max-width: 70rem;
+  margin: -4rem 1rem 0 1rem;
   padding: 1.25rem;
   background-color: $primary-white;
   border-radius: 4px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 
   @include tablet {
-    margin: -5rem 2rem 7rem 2rem;
+    margin: -5rem auto 0 auto;
+    min-width: 45rem !important;
   }
+
   @include desktop {
-    margin: -5rem auto 7rem auto;
-    min-width: 64rem !important;
+    margin: -5rem auto 0 auto;
+    min-width: 70rem !important;
   }
 
   &__header {
@@ -134,6 +136,13 @@
     align-items: center;
     gap: 0.5rem;
     @include body-medium();
+    cursor: pointer;
+    transition: opacity 0.3s ease;
+
+    &--disabled {
+      opacity: 0.5;
+      pointer-events: none;
+    }
   }
 
   &__buttons {
@@ -161,6 +170,7 @@
   &__submit-button {
     @include primary-button();
     border: $primary-indigo;
+    cursor: pointer;
   }
 
   select {

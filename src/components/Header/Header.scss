@@ -2,11 +2,8 @@
 @use "../../styles/partials/typography" as *;
 @use "../../styles/partials/variables" as *;
 
-
 .nav-wrap {
-
   padding: 1rem;
-
 
   background-color: $background-graphite;
   width: 100%;
@@ -21,14 +18,12 @@
     padding: 2.5rem 4rem;
   }
 
-
   .nav {
     display: flex;
     width: 100%;
 
-    
     flex-direction: column;
-   justify-content: space-between;
+    justify-content: space-between;
     gap: 1rem;
 
     background-color: $background-graphite;
@@ -40,7 +35,6 @@
       flex-direction: row;
       justify-content: space-between;
       width: 45rem;
-      
     }
 
     @include desktop {

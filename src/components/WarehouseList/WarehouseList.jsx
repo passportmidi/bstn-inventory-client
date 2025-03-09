@@ -158,13 +158,14 @@ export default function Warehouses() {
                 </div>
                 <div className="warehouse__cell-item warehouse__actions">
                   <img
+                    className="warehouse__delete-icon" 
                     src={deleteLogo}
                     alt="Delete"
                     onClick={() => handleOpenDeleteModal(warehouse)}
                   />
                   <Link
                     to={`/warehouse/${warehouse.id}/edit`}
-                    className="warehouse__link"
+                    className="warehouse__icon-link"
                   >
                     <img src={editLogo} alt="Edit" />
                   </Link>
