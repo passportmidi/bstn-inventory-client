@@ -3,17 +3,20 @@
 
 .add-warehouse {
   max-width: 64rem;
-  margin: -4rem 1rem 2rem 1rem;
+  width: 90%; 
+  margin: -4rem auto 0 auto; 
   padding: 1.25rem;
   background-color: $primary-white;
   border-radius: 4px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
 
   @include tablet {
-    margin: -5rem 2rem 7rem 2rem;
+    margin: -5rem auto 0 auto; 
+    width: 95%; 
   }
   @include desktop {
-    margin: -5rem auto 7rem auto;
+    margin: -5rem auto 0 auto; 
+    width: 80%; 
   }
   &__header {
     display: flex;
