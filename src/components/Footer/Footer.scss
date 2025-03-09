@@ -1,21 +1,18 @@
 @use "../../styles/partials/mixins" as *;
-@use "../../styles/partials/typography" as *;
 @use "../../styles/partials/variables" as *;
 
-.foot {
-  display: flex;
-  align-items: flex-end;
-  justify-content: center;
+.foot { 
+  padding: 1rem; 
+  text-align: center; 
 
   &__txt {
-    font-family: $font-family;
-    color: $secondary-slate;
-    font-weight: 400;
+    color: $secondary-slate; 
+    margin: 0; 
     font-size: 0.6875rem;
-    line-height: 1rem;
+    font-weight: 400; 
 
     @include tablet {
-      font-size: 12px;
+      font-size: .75rem; 
     }
   }
 }

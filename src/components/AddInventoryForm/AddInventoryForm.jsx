@@ -5,7 +5,7 @@ import "./AddInventoryForm.scss";
 import arrowBackIcon from "../../assets/icons/arrow_back-24px.svg";
 
 const AddInventoryItem = () => {
-  const navigate = useNavigate(); 
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     itemName: "",
     description: "",
@@ -71,7 +71,7 @@ const AddInventoryItem = () => {
     e.preventDefault();
 
     if (!validateForm()) {
-      return; 
+      return;
     }
 
     try {
@@ -81,7 +81,7 @@ const AddInventoryItem = () => {
         description: formData.description,
         category: formData.category,
         status: formData.status,
-        quantity: parseInt(formData.quantity, 10), 
+        quantity: parseInt(formData.quantity, 10),
       };
 
       const response = await axios.post(
@@ -90,7 +90,6 @@ const AddInventoryItem = () => {
       );
 
       console.log("Inventory item created:", response.data);
-
 
       navigate("/inventory");
     } catch (error) {
@@ -189,7 +188,9 @@ const AddInventoryItem = () => {
             <div className="add-inventory-item__form-group">
               <label className="add-inventory-item__label">Status</label>
               <div className="add-inventory-item__radio-group">
-                <label className="add-inventory-item__radio-label">
+                <label className={`add-inventory-item__radio-label ${
+                  formData.status === "Out of Stock" ? "add-inventory-item__radio-label--disabled" : ""
+                }`}>
                   <input
                     type="radio"
                     name="status"
@@ -199,7 +200,9 @@ const AddInventoryItem = () => {
                   />
                   In stock
                 </label>
-                <label className="add-inventory-item__radio-label">
+                <label className={`add-inventory-item__radio-label ${
+                  formData.status === "In Stock" ? "add-inventory-item__radio-label--disabled" : ""
+                }`}>
                   <input
                     type="radio"
                     name="status"

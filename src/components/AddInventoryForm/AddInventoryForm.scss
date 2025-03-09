@@ -92,8 +92,8 @@
     }
 
     &--description {
-      height: 6rem; 
-      padding-bottom: 3.5rem; 
+      height: 6rem;
+      padding-bottom: 3.5rem;
     }
   }
 
@@ -109,7 +109,7 @@
     margin: 1.25rem -1.25rem;
 
     @include tablet {
-      display: none; 
+      display: none;
     }
   }
 
@@ -133,6 +133,12 @@
     align-items: center;
     gap: 0.5rem;
     @include body-medium();
+    cursor: pointer;
+    transition: opacity 0.3s ease;
+
+    &--disabled {
+      opacity: 0.5;
+    }
   }
 
   &__buttons {
@@ -160,6 +166,7 @@
   &__submit-button {
     @include primary-button();
     border: $primary-indigo;
+    cursor: pointer;
   }
 
   select {
@@ -168,6 +175,6 @@
     background-repeat: no-repeat;
     background-position: right 0.75rem center;
     background-size: 1rem;
-    padding-right: 2rem; 
+    padding-right: 2rem;
   }
 }
