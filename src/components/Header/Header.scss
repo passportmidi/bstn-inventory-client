@@ -2,9 +2,10 @@
 @use "../../styles/partials/typography" as *;
 @use "../../styles/partials/variables" as *;
 
+
 .nav-wrap {
 
-
+  padding: 1rem;
 
 
   background-color: $background-graphite;
@@ -13,20 +14,20 @@
   justify-content: center;
 
   @include tablet {
-
+    padding: 2rem 0;
   }
 
   @include desktop {
-
+    padding: 2.5rem 4rem;
   }
 
 
   .nav {
     display: flex;
+    width: 100%;
 
-    padding: 1rem;
-    flex-direction: row;
-    // justify-content: center;
+    
+    flex-direction: column;
    justify-content: space-between;
     gap: 1rem;
 
@@ -38,11 +39,12 @@
       display: flex;
       flex-direction: row;
       justify-content: space-between;
-      padding: 2rem;
+      width: 45rem;
+      
     }
 
     @include desktop {
-      padding: 2rem 4rem;
+      width: 70rem;
     }
 
     img {
@@ -52,6 +54,7 @@
     }
 
     a {
+      height: fit-content;
       text-decoration: none;
       &:hover {
         text-decoration: underline;
@@ -59,16 +62,21 @@
     }
 
     &__wordmark {
-      // width: 100%;
-      // display: flex;
-      // justify-content: center;
+      width: fit-content;
+      align-self: center;
+      margin: 0.25rem 0;
+
+      display: flex;
+      align-items: center;
     }
 
     &__links {
       font-size: 0.875rem;
       width: 100%;
+      height: 100%;
       display: flex;
-
+      flex-direction: row;
+      align-items: center;
       justify-content: space-between;
 
       // when links are in-active
@@ -105,7 +113,6 @@
 .gap {
   background-color: $background-graphite;
   height: 4rem;
-  //   border-top: 1px solid white;
   @include tablet {
     height: 5rem;
   }
