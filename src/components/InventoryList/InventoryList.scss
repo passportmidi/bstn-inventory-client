@@ -8,13 +8,13 @@
   flex-direction: column;
   justify-content: space-between;
   @include tablet {
-    padding: 1.5rem;
+    padding: 1.3rem 1.5rem;
     flex-direction: row;
     align-items: center;
   }
 
   @include desktop {
-    padding: 2rem;
+    padding: 1.3rem 2rem;
   }
   &__header {
     padding-bottom: 1rem;
@@ -42,9 +42,9 @@
     margin-bottom: 1rem;
     display: flex;
     justify-content: space-between;
-    border-radius: 20px;
+    border-radius: 1.25rem;
     border: 1px solid $secondary-cloud;
-    height: 38px;
+    height: 2.375rem;
     padding: 0rem 1rem;
     background-color: $primary-white;
     align-items: center;
@@ -82,7 +82,7 @@
     }
   }
   &__sort {
-    height: 14px;
+    height: .875rem;
   }
 
   &__header-item {
@@ -91,7 +91,7 @@
     @include tablet {
       display: flex;
       flex-direction: row;
-      gap: 8px;
+      gap: .5rem;
       align-items: center;
       justify-content: center;
     }
@@ -184,7 +184,7 @@
     display: flex;
     flex-direction: row;
     align-items: center;
-    gap: 4px;
+    gap: .25rem;
   }
 
   &__desc {

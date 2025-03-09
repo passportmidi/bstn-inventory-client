@@ -66,7 +66,7 @@ export default function WarehouseDetailsInfo() {
         </div>
         <div className="details__main">
           <div className="details__address">
-            <h3 className="details__subheader"> Warehouse Address </h3>
+            <h3 className="details__subheader"> Warehouse Address: </h3>
             <p className="details__desc details__same-line">
               {warehouse.address}{" "}
             </p>{" "}
@@ -76,12 +76,12 @@ export default function WarehouseDetailsInfo() {
           </div>
           <div className="details__contact">
             <div className="details__name">
-              <h3 className="details__subheader"> Contact Name </h3>
+              <h3 className="details__subheader"> Contact Name: </h3>
               <p className="details__desc"> {warehouse.contact_name} </p>{" "}
               <p className="details__desc">{warehouse.contact_position}</p>
             </div>
             <div className="details__information">
-              <h3 className="details__subheader"> Contact Information </h3>
+              <h3 className="details__subheader"> Contact Information: </h3>
               <p className="details__desc"> {warehouse.contact_phone} </p>{" "}
               <p className="details__desc"> {warehouse.contact_email} </p>{" "}
             </div>

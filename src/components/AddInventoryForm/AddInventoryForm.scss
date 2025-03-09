@@ -6,7 +6,7 @@
   margin: -4rem 1rem 0 1rem;
   padding: 1.25rem;
   background-color: $primary-white;
-  border-radius: 4px;
+  border-radius: .25rem;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 
   @include tablet {
@@ -52,7 +52,6 @@
   &__form-sections {
     display: flex;
     flex-direction: column;
-    gap: 1.25rem;
 
     @include tablet {
       flex-direction: row;
@@ -85,7 +84,7 @@
     width: 100%;
     padding: 0.5rem;
     border: 1px solid $secondary-cloud;
-    border-radius: 18px;
+    border-radius: 1.125rem;
     @include body-medium();
     color: $secondary-slate;
     position: relative;
@@ -141,7 +140,6 @@
 
     &--disabled {
       opacity: 0.5;
-      pointer-events: none;
     }
   }
 
