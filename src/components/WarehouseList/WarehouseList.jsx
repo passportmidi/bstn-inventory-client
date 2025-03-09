@@ -165,7 +165,7 @@ export default function Warehouses() {
                   />
                   <Link
                     to={`/warehouse/${warehouse.id}/edit`}
-                    className="warehouse__link"
+                    className="warehouse__icon-link"
                   >
                     <img src={editLogo} alt="Edit" />
                   </Link>

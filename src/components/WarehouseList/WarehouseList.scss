@@ -140,7 +140,11 @@
   }
 
   &__delete-icon {
-    cursor: pointer; 
+    cursor: pointer;
+  }
+  &__icon-link {
+    display: flex;
+    align-items: center;
   }
   &__cell {
     padding: 8px 0;

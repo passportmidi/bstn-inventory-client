@@ -2,27 +2,26 @@
 @use "../../styles/partials/mixins" as *;
 
 .add-warehouse {
-  max-width: 64rem;
-  width: 90%; 
-  margin: -4rem auto 0 auto; 
+  max-width: 70rem;
+  margin: -4rem 1rem 0 1rem;
   padding: 1.25rem;
   background-color: $primary-white;
   border-radius: 4px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 
   @include tablet {
-    margin: -5rem auto 0 auto; 
-    width: 95%; 
+    margin: -5rem auto 0 auto;
+    min-width: 45rem !important;
   }
   @include desktop {
-    margin: -5rem auto 0 auto; 
-    width: 80%; 
+    margin: -5rem auto 0 auto;
+    min-width: 70rem !important;
   }
+
   &__header {
     display: flex;
     align-items: center;
     margin-bottom: 1.25rem;
-
   }
 
   &__back-link {
@@ -103,10 +102,10 @@
   &__divider-horizontal {
     height: 1px;
     background-color: $secondary-cloud;
-    margin: 1.25rem -1.25rem; 
+    margin: 1.25rem -1.25rem;
 
     @include tablet {
-      display: none; 
+      display: none;
     }
   }
 
@@ -125,7 +124,7 @@
     justify-content: center;
     gap: 0.625rem;
     padding: 1.25rem;
-    margin: 1.25rem -1.25rem -1.25rem -1.25rem; 
+    margin: 1.25rem -1.25rem -1.25rem -1.25rem;
     background-color: $background-lightgrey;
 
     @include tablet {

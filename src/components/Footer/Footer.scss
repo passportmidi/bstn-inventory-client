@@ -1,18 +1,28 @@
 @use "../../styles/partials/mixins" as *;
 @use "../../styles/partials/variables" as *;
 
-.foot { 
-  padding: 1rem; 
-  text-align: center; 
+.foot {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+
+  flex-grow: 1;
+  align-items: flex-end;
 
   &__txt {
-    color: $secondary-slate; 
-    margin: 0; 
+    margin: 2rem 0;
+    font-family: $font-family;
+    color: $secondary-slate;
+    font-weight: 400;
     font-size: 0.6875rem;
-    font-weight: 400; 
+    font-weight: 400;
 
     @include tablet {
-      font-size: .75rem; 
+      font-size: 0.75rem;
+    }
+
+    @include desktop {
+      margin: 3rem 0;
     }
   }
 }
