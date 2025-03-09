@@ -113,10 +113,16 @@
 
   &__cancel-button {
     @include secondary-button();
+    &:hover{
+      cursor: pointer
+    }
   }
 
   &__delete-button {
     @include delete-button();
     border: $supporting-red;
+    &:hover{
+      cursor: pointer
+    }
   }
 }
