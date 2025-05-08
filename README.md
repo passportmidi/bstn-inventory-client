@@ -1,1 +1,1 @@
-# instock-client
+# inventory-website-client
