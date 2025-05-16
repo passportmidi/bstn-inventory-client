@@ -1,1 +1,1 @@
-# inventory-website-client
+# bstn-inventory-client
